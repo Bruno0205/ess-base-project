@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Scenario: Usuário realiza o cadastro como pessoa física
 
 Given que o usuário acessa a página de “Cadastro” 
@@ -50,6 +49,4 @@ Then o sistema exibe a mensagem de erro "Este email já está em uso"
 And o cadastro não é concluído 
 And o usuário permanece na página de “Cadastro”.
 
-=======
->>>>>>> b5e2f9ef2ac4bbf3cbc50a171d0b5991aacbe989
 
