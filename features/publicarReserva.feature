@@ -14,8 +14,8 @@ When o usuário preenche os campos obrigatórios:
       | Título                 | "Casa Aconchegante"      
       | Descrição          | "Uma bela casa a poucos metros de mercados, farmácias e parques
       | Imagens            | ["https://exemplo.com/imagem1.jpg"] 
-      | Petfriendly        | "Sim"                            
-      | Endereço           | "Av. Jorn. Aníbal Fernandes, Recife" 
+      | Petfriendly        | "Não"                            
+      | Endereço           | "Av. Jorn. Aníbal Fernandes, São Paulo" 
       | Tipo                   | "Residencial"              
       | Disponibilidade | "Segunda a Sexta-feira" 
       | Preço                 | "R$ 150,00"    
