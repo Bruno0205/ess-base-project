@@ -1,0 +1,20 @@
+{
+    "usuarios": [
+        {
+            "ativo": true,
+            "uf": "PB",
+            "email": "Example@Newpas-s.br",
+            "login": "BruhPF",
+            "senha": "Senha123",
+            "liberado": true,
+            "codigo_verificacao": null,
+            "codigo_valido_ate": null,
+            "reset_token": "AJSU23",
+            "reset_token_expira": "2025-02-24T09:07:31.296541",
+            "tipo_pessoa": "fisica",
+            "cpf": "123.123.312-23",
+            "nome": "Bruno Carvalho",
+            "nascimento": "12/12/2000"
+        }
+    ]
+}

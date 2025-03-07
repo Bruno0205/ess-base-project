@@ -40,5 +40,37 @@ class HTTPResponses:
             status_code=500,
         )
 
+    @staticmethod
+    def REVIEW_ADDED() -> HttpResponseModel:
+        return HttpResponseModel(
+            message="Review added successfully",
+            status_code=200,
+        )
 
-    # TODO: implement other responses (item created, updated, deleted, etc)
+    @staticmethod
+    def REVIEW_NOT_FOUND() -> HttpResponseModel:
+        return HttpResponseModel(
+            message="Review not found",
+            status_code=404,
+        )
+
+    @staticmethod
+    def REVIEW_HIDDEN() -> HttpResponseModel:
+        return HttpResponseModel(
+            message="Review hidden successfully",
+            status_code=200,
+        )
+
+    @staticmethod
+    def QUERIES_NOT_FOUND() -> HttpResponseModel:
+        return HttpResponseModel(
+            message="No reservations found with the given filters",
+            status_code=404,
+        )
+
+    @staticmethod
+    def QUERIES_FOUND() -> HttpResponseModel:
+        return HttpResponseModel(
+            message="Reservations found",
+            status_code=200,
+        )
