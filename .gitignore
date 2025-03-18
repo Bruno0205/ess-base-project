@@ -3,3 +3,7 @@ __pycache__/
 
 *.log
 *.swp
+
+node_modules/
+.env
+.venv/

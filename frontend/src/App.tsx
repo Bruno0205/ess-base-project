@@ -1,19 +1,27 @@
+// src/App.tsx ou src/routes.tsx
+import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./app/home/pages/HomePage"; // Tela inicial
 import CreateTest from "./app/home/pages/CreateTest";
 import ListTests from "./app/home/pages/ListTests";
+import Login from "./app/home/pages/Login"; // Nova página de login
 
 const router = createBrowserRouter([
   {
-    path: "*",
-    Component: CreateTest,
+    path: "/",
+    element: <Home/>,
   },
   {
     path: "/create-test",
-    Component: CreateTest,
+    element: <CreateTest />,
   },
   {
     path: "/tests",
-    Component: ListTests,
+    element: <ListTests />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 
