@@ -48,7 +48,7 @@
     font-weight: bold;
     color: white; /* Texto branco para contraste */
     text-align: center;
-    padding-top: 50px; /* Ajuste para centralizar o texto */
+    padding-top: 30px; /* Ajuste para centralizar o texto */
   }
   
   .buttonsContainer {
@@ -72,3 +72,57 @@
   .button:hover {
     opacity: 0.9;
   }
+
+  .input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 60%;
+    margin-right: 1rem; /* Espaçamento entre o rótulo e o seguinte checkbox */
+  }
+
+  .searchInput {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 80%;
+    flex: 1; /* Faz o input ocupar o espaço disponível */
+    
+  }
+
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px; /* Espaçamento entre o input e o botão */
+    width: 70%;
+  }
+
+  .filtersContainer {
+  display: flex;
+  align-items: left;
+  margin-top: 1rem; /* Espaçamento acima do checkbox */
+  width: 60%;
+  margin-bottom: 2rem; /* Espaçamento acima do checkbox */
+}
+
+.checkbox {
+  margin-right: 0.2rem; /* Espaçamento entre o checkbox e o rótulo */
+}
+
+.checkboxLabel {
+  font-size: 1rem;
+  color: #333; /* Cor do texto do rótulo */
+  margin-right: 1rem; /* Espaçamento entre o rótulo e o seguinte checkbox */
+}
+
+.select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-top: 0.2rem; /* Espaçamento acima do select */
+  width: 50%; /* Faz o select ocupar toda a largura disponível */
+  margin-right: 1rem; /* Espaçamento entre o rótulo e o seguinte checkbox */
+}
