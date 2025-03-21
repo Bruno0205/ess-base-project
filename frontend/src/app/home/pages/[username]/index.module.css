@@ -1,0 +1,55 @@
+/* frontend/src/app/home/pages/[username]/index.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #f5f5f5; /* Fundo claro para o restante da página */
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333; /* Cor do título mais suave */
+  }
+  
+  .buttonsContainer {
+    display: flex;
+    gap: 16px; /* Espaçamento entre os botões */
+    margin-top: 2rem;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white; /* Cor do texto nos botões */
+    background-color: #ff5a5f; /* Cor laranja vibrante */
+  }
+  
+  .button:hover {
+    opacity: 0.9;
+  }
+  
+  .logoutButton {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white; /* Cor do texto nos botões */
+    background-color: #c62828; /* Cor vermelha para destacar o botão de sair */
+  }
+  
+  .logoutButton:hover {
+    opacity: 0.9;
+  }
