@@ -1,9 +1,10 @@
 // frontend/src/app/home/pages/[username]/reservas/index.tsx
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styles from "./index.module.css";
 
 const Reservas = () => {
+  const { username } = useParams(); // Captura o parâmetro :username da URL
   const reservas = [
     { id: 1, data: "20/10/2023", status: "Ativa" },
     { id: 2, data: "25/10/2023", status: "Cancelada" },
@@ -12,7 +13,8 @@ const Reservas = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Link to="/usuario/[username]" className={styles.backButton}>
+        {/* Botão Voltar com o username dinâmico */}
+        <Link to={`/usuario/${username}`} className={styles.backButton}>
           Voltar
         </Link>
         <h1 className={styles.title}>Minhas Reservas</h1>

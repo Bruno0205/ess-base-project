@@ -8,6 +8,8 @@ import RegisterReservation from "./app/home/pages/CadastroReserva"; // Página d
 import UserPage from "./app/home/pages/[username]"; // Página do usuário
 import MinhasReservas from "./app/home/pages/[username]/reservas"; // Página de reservas
 import MinhasLocacoes from "./app/home/pages/[username]/locacoes"; // Página de locações
+import MudarSenha from "./app/home/pages/mudarSenha"; // Página de locações
+import ResetarSenha from "./app/home/pages/resetarSenha"; // Página de locações
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
   {
     path: "/usuario/:username/locacoes", // Subrota para minhas locações
     element: <MinhasLocacoes />,
+  },
+  {
+  path: "/mudar-senha",
+  element: <MudarSenha />,
+  },
+  {
+    path: "/resetar-senha",
+    element: <ResetarSenha />,
   },
 ]);
 

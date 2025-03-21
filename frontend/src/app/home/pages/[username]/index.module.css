@@ -37,3 +37,19 @@
   .button:hover {
     opacity: 0.9;
   }
+  
+  .logoutButton {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white; /* Cor do texto nos botões */
+    background-color: #c62828; /* Cor vermelha para destacar o botão de sair */
+  }
+  
+  .logoutButton:hover {
+    opacity: 0.9;
+  }

@@ -1,6 +1,8 @@
+// frontend/src/app/home/pages/Login/index.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import styles from "./index.module.css";
 
 const LoginPage = () => {
   const [login, setLogin] = useState("");
@@ -12,12 +14,10 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      // Constrói a URL com os parâmetros de consulta
       const url = `http://localhost:8000/login/auth?login=${encodeURIComponent(login)}&senha=${encodeURIComponent(senha)}`;
-
       const response = await fetch(url, {
         method: "POST",
-        headers: { "Accept": "application/json" }, // Adiciona o cabeçalho Accept
+        headers: { "Accept": "application/json" },
       });
 
       if (!response.ok) {
@@ -38,29 +38,43 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Login:
-          <input
-            type="text"
-            value={login}
-            onChange={(e) => setLogin(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Senha:
-          <input
-            type="password"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Entrar</button>
-      </form>
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.card}>
+          <h1 className={styles.title}>Login</h1>
+          <form onSubmit={handleSubmit} className={styles.form}>
+            <label className={styles.label}>
+              Login:
+              <input
+                type="text"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
+                className={styles.input}
+                required
+              />
+            </label>
+            <label className={styles.label}>
+              Senha:
+              <input
+                type="password"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                className={styles.input}
+                required
+              />
+            </label>
+            <button type="submit" className={styles.button}>
+              Entrar
+            </button>
+            <p className={styles.link}>
+              Esqueceu sua senha?{" "}
+              <a href="/mudar-senha" className={styles.resetLink}>
+                Clique aqui
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
