@@ -1,34 +1,73 @@
-// src/app/home/pages/Login/index.tsx
-import React from "react";
-import styles from "./index.module.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
-const Login = () => {
+const LoginPage = () => {
+  const [login, setLogin] = useState("");
+  const [senha, setSenha] = useState("");
+  const { login: authLogin } = React.useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      // Constrói a URL com os parâmetros de consulta
+      const url = `http://localhost:8000/login/auth?login=${encodeURIComponent(login)}&senha=${encodeURIComponent(senha)}`;
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Accept": "application/json" }, // Adiciona o cabeçalho Accept
+      });
+
+      if (!response.ok) {
+        throw new Error("Login ou senha incorretos");
+      }
+
+      const data = await response.json();
+      const user = data.user;
+
+      // Salva o usuário no contexto
+      authLogin(user);
+
+      // Redireciona para a página do usuário
+      navigate(`/usuario/${encodeURIComponent(user.login)}`);
+    } catch (error) {
+      alert(getErrorMessage(error));
+    }
+  };
+
   return (
-    <div className={styles.container}>
-      <div className={styles.logoContainer}>
-        <img src="/path/to/logo.png" alt="Logo" className={styles.logo} />
-      </div>
-      <form className={styles.form}>
-        <h1 className={styles.title}>Faça seu Login</h1>
-        <input
-          type="login"
-          placeholder="Login"
-          className={styles.input}
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          className={styles.input}
-        />
-        <button type="submit" className={styles.button}>
-          Entrar
-        </button>
-        <p className={styles.link}>
-          Não tem conta? <a href="/register">Cadastre-se</a>
-        </p>
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Login:
+          <input
+            type="text"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+            required
+          />
+        </label>
+        <label>
+          Senha:
+          <input
+            type="password"
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
+        </label>
+        <button type="submit">Entrar</button>
       </form>
     </div>
   );
 };
 
-export default Login;
+function getErrorMessage(error: unknown): string {
+  if (error instanceof Error) return error.message;
+  return String(error);
+}
+
+export default LoginPage;
