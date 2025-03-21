@@ -7,14 +7,14 @@ from pydantic import BaseModel
 import json
 
 def getDB():
-    #with open(r'C:\Users\mathe\OneDrive\Desktop\College Projects\ess-base-project\backend\src\db\db_avaliacoes.json', 'r') as dbu:
-    with open(r'ess-base-project\backend\src\db\db_avaliacoes.json', 'r') as dbu:
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'db_avaliacoes.json')
+    with open(db_path, 'r') as dbu:
         db = json.load(dbu)
     return db
 
 def saveDB(db):
-    #with open(r'C:\Users\mathe\OneDrive\Desktop\College Projects\ess-base-project\backend\src\db\db_avaliacoes.json', 'w') as dbu:
-    with open(r'ess-base-project\backend\src\db\db_avaliacoes.json', 'w') as dbu: 
+    db_path = os.path.join(os.path.dirname(__file__), '..', 'db', 'db_avaliacoes.json')
+    with open(db_path, 'w') as dbu:
         json.dump(db, fp=dbu, indent=4)
     return db
 

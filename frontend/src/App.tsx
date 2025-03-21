@@ -10,6 +10,7 @@ import MinhasReservas from "./app/home/pages/[username]/reservas"; // Página de
 import MinhasLocacoes from "./app/home/pages/[username]/locacoes"; // Página de locações
 import MudarSenha from "./app/home/pages/mudarSenha"; // Página de locações
 import ResetarSenha from "./app/home/pages/resetarSenha"; // Página de locações
+import SearchResults from "./app/home/pages/SearchResults"; //Nova página de resultados de busca
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
     element: <Register />,
   },
   {
-    path: "/register-reservation",
+    path: "/search",
+    element: <SearchResults />,
+  },
+  {
+  path: "/register-reservation",
     element: <RegisterReservation />,
   },
   {

@@ -52,6 +52,85 @@ const HomePage = () => {
         </p>
       </div>
 
+      {/* Barra de Pesquisa */}
+      <div className={styles.searchContainer}>
+        <input
+          type="text"
+          placeholder="Encontre Reserva"
+          className={styles.searchInput}
+        />
+        <a href="/search" type="submit" className={styles.button}>
+          Buscar
+        </a>
+      </div>
+      {/* Filters */}
+      <div className={styles.filtersContainer}>
+      <select className={styles.select}>
+          <option value="">Estado</option>
+          <option value="AC">Acre</option>
+          <option value="AL">Alagoas</option>
+          <option value="AP">Amapá</option>
+          <option value="AM">Amazonas</option>
+          <option value="BA">Bahia</option>
+          <option value="CE">Ceará</option>
+          <option value="DF">Distrito Federal</option>
+          <option value="ES">Espírito Santo</option>
+          <option value="GO">Goiás</option>
+          <option value="MA">Maranhão</option>
+          <option value="MT">Mato Grosso</option>
+          <option value="MS">Mato Grosso do Sul</option>
+          <option value="MG">Minas Gerais</option>
+          <option value="PA">Pará</option>
+          <option value="PB">Paraíba</option>
+          <option value="PR">Paraná</option>
+          <option value="PE">Pernambuco</option>
+          <option value="PI">Piauí</option>
+          <option value="RJ">Rio de Janeiro</option>
+          <option value="RN">Rio Grande do Norte</option>
+          <option value="RS">Rio Grande do Sul</option>
+          <option value="RO">Rondônia</option>
+          <option value="RR">Roraima</option>
+          <option value="SC">Santa Catarina</option>
+          <option value="SP">São Paulo</option>
+          <option value="SE">Sergipe</option>
+          <option value="TO">Tocantins</option>
+        </select>
+        <select className={styles.select}>
+          <option value="">Tipo de Reserva</option>
+          <option value="AC">Qaurto</option>
+          <option value="AL">Casa</option>
+          <option value="AP">Apartamento</option>
+          <option value="AM">Salão</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Preço Máximo"
+          className={styles.input}
+        />
+        <input
+          type="text"
+          placeholder="Preço Minimo"
+          className={styles.input}
+        />
+        <input
+          type="checkbox"
+          id="petFriendly"
+          className={styles.checkbox}
+        />
+        <label htmlFor="petFriendly" className={styles.checkboxLabel}>
+          Pet-friendly
+        </label>
+        <input
+          type="checkbox"
+          id="destacado"
+          className={styles.checkbox}
+        />
+        <label htmlFor="destacado" className={styles.checkboxLabel}>
+          Destacado
+        </label>
+      </div>
+
+
       {/* Botões de Navegação */}
       <div className={styles.buttonsContainer}>
         <a href="/login" className={styles.button}>

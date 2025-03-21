@@ -1,0 +1,41 @@
+.resultItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.resultContent {
+  flex: 1;
+}
+
+.resultTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.resultDescription {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.resultDetail {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.resultImageContainer {
+  margin-left: 16px;
+}
+
+.resultImage {
+  width: 150px;
+  height: auto;
+  border-radius: 4px;
+}
