@@ -59,9 +59,9 @@ const HomePage = () => {
           placeholder="Encontre Reserva"
           className={styles.searchInput}
         />
-        <button type="submit" className={styles.button}>
+        <a href="/search" type="submit" className={styles.button}>
           Buscar
-        </button>
+        </a>
       </div>
       {/* Filters */}
       <div className={styles.filtersContainer}>

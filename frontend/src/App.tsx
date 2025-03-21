@@ -6,6 +6,8 @@ import CreateTest from "./app/home/pages/CreateTest";
 import ListTests from "./app/home/pages/ListTests";
 import Login from "./app/home/pages/Login"; //Nova página de login
 import Register from "./app/home/pages/Cadastro"; //Nova página de login
+import SearchResults from "./app/home/pages/SearchResults"; //Nova página de resultados de busca
+
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/search",
+    element: <SearchResults />,
   },
 ]);
 
