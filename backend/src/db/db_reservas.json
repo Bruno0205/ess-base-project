@@ -27,13 +27,13 @@
             ],
             "avalMedia": 4.5,
             "qntdAlugado": 10,
-            "destacado": true,
+            "destacado": false,
             "temporada": "string"
         },
         {
             "ativo": true,
             "titulo": "Casa Beira Mar",
-            "descricao": "Casa com vista para o mar, ideal para férias em família.",
+            "descricao": "Casa com vista para o mar, ideal para viagem.",
             "imagens": [
                 "casa_mar.jpg"
             ],
