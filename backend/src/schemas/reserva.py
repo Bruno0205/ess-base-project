@@ -41,8 +41,8 @@ class Reserva(BaseModel):
     disponibilidade: Periodo 
     alugado: List[Periodo] = [] 
     preco: int = 0
-    usuario: str
-    alugado_por: List[str] = None
+    usuario: str #email pois é único
+    alugado_por: List[str] = Field(default_factory=list)
     avalMedia: float = 0
     qntdAlugado: int = 0
     destacado: bool = False 

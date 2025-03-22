@@ -2,19 +2,34 @@
     "usuarios": [
         {
             "ativo": true,
-            "uf": "PB",
+            "uf": "PE",
             "email": "bcs6@cin.ufpe.br",
-            "login": "BruhPF",
-            "senha": "MyNew123",
+            "login": "BrunoCS8",
+            "senha": "Senha123",
             "liberado": true,
+            "codigo_verificacao": "8E3438",
+            "codigo_valido_ate": "2025-03-22T11:21:25.411921",
+            "reset_token": null,
+            "reset_token_expira": null,
+            "tipo_pessoa": "fisica",
+            "cpf": "123.231.231-22",
+            "nome": "BRUNO CARVALHO SOARES",
+            "nascimento": "2001-06-06"
+        },
+        {
+            "ativo": true,
+            "uf": "SP",
+            "email": "engencorps@dasdasdalkj123.ca3",
+            "login": "Engecorp",
+            "senha": "Engecorp1",
+            "liberado": false,
             "codigo_verificacao": null,
             "codigo_valido_ate": null,
             "reset_token": null,
             "reset_token_expira": null,
-            "tipo_pessoa": "fisica",
-            "cpf": "123.123.312-23",
-            "nome": "Bruno Carvalho",
-            "nascimento": "12/12/2000"
+            "tipo_pessoa": "juridica",
+            "cnpj": "12.331.231/2312-32",
+            "razao_social": "Engecorp Engenharia LTDA"
         }
     ]
 }

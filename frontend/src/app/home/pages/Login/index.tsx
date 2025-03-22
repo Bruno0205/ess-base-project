@@ -72,6 +72,14 @@ const LoginPage = () => {
                 Clique aqui
               </a>
             </p>
+
+            {/* Botão de cadastro */}
+            <p className={styles.link}>
+              Você ainda não tem cadastro?{" "}
+              <a href="/register" className={styles.resetLink}>
+                Clique aqui.
+              </a>
+            </p>
           </form>
         </div>
       </div>

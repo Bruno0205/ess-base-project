@@ -11,6 +11,7 @@ import MinhasLocacoes from "./app/home/pages/[username]/locacoes"; // Página de
 import MudarSenha from "./app/home/pages/mudarSenha"; // Página de locações
 import ResetarSenha from "./app/home/pages/resetarSenha"; // Página de locações
 import SearchResults from "./app/home/pages/SearchResults"; //Nova página de resultados de busca
+import UserAccountVerification from "./app/home/pages/[username]/liberarConta"; //Nova página de resultados de busca
 
 const router = createBrowserRouter([
   {
@@ -34,15 +35,15 @@ const router = createBrowserRouter([
     element: <RegisterReservation />,
   },
   {
-    path: "/usuario/:username", // Rota dinâmica para a página do usuário
+    path: "/usuario/:username", 
     element: <UserPage />,
   },
   {
-    path: "/usuario/:username/reservas", // Subrota para minhas reservas
+    path: "/usuario/:username/reservas", 
     element: <MinhasReservas />,
   },
   {
-    path: "/usuario/:username/locacoes", // Subrota para minhas locações
+    path: "/usuario/:username/locacoes",
     element: <MinhasLocacoes />,
   },
   {
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
     path: "/resetar-senha",
     element: <ResetarSenha />,
   },
+  {
+    path: "/usuario/:username/liberarConta",
+    element: <UserAccountVerification />,
+  },
+
+  
 ]);
 
 export default function App() {

@@ -21,12 +21,21 @@ const UserPage = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Bem-vindo, {firstName}!</h1>
       <div className={styles.buttonsContainer}>
+        {/* Botão para Minhas Reservas */}
         <Link to={`/usuario/${username}/reservas`}>
           <button className={styles.button}>Minhas Reservas</button>
         </Link>
+
+        {/* Botão para Minhas Locações */}
         <Link to={`/usuario/${username}/locacoes`}>
           <button className={styles.button}>Minhas Locações</button>
         </Link>
+
+        {/* Botão para Verificação de Conta */}
+        <Link to={`/usuario/${username}/liberarConta`}>
+          <button className={styles.button}>Verificar Conta</button>
+        </Link>
+
         {/* Botão de Sair */}
         <button onClick={handleLogout} className={styles.logoutButton}>
           Sair
