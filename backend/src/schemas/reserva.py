@@ -39,13 +39,13 @@ class Reserva(BaseModel):
     endereco: str
     tipo: TipoReserva
     disponibilidade: Periodo 
-    alugado: Optional[Periodo] = [] 
+    alugado: List[Periodo] = [] 
     preco: int = 0
     usuario: str #email pois é único
-    alugado_por: List[str] = []
+    alugado_por: List[str] = Field(default_factory=list)
     avalMedia: float = 0
     qntdAlugado: int = 0
     destacado: bool = False 
-    temporada: Optional[str] = []
+    temporada: Optional[str] = None
 
 

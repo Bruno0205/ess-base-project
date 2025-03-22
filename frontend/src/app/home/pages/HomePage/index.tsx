@@ -1,37 +1,13 @@
 // src/app/home/pages/Home/index.tsx
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [filters, setFilters] = useState({
-    estado: "",
-    tipo: "",
-    valmax: "",
-    valmin: "",
-    petfriendly: false,
-    destacado: false,
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFilters({
-      ...filters,
-      [name]: type === "checkbox" ? checked : value,
-    });
-  };
 
   const handleSearch = () => {
-    const query = new URLSearchParams(
-      Object.entries(filters)
-        .filter(([key, value]) => value !== "" && value !== false)
-        .reduce((acc, [key, value]) => {
-          acc[key] = value.toString();
-          return acc;
-        }, {})
-    ).toString();
-    navigate(`/search?${query}`);
+    navigate(`/search`);
   };
 
   return (
@@ -83,97 +59,10 @@ const HomePage = () => {
         </p>
       </div>
 
-      {/* Filters */}
-      <div className={styles.filtersContainer}>
-        <select
-          name="estado"
-          className={styles.select}
-          value={filters.estado}
-          onChange={handleInputChange}
-        >
-          <option value="">Estado</option>
-          <option value="AC">Acre</option>
-          <option value="AL">Alagoas</option>
-          <option value="AP">Amapá</option>
-          <option value="AM">Amazonas</option>
-          <option value="BA">Bahia</option>
-          <option value="CE">Ceará</option>
-          <option value="DF">Distrito Federal</option>
-          <option value="ES">Espírito Santo</option>
-          <option value="GO">Goiás</option>
-          <option value="MA">Maranhão</option>
-          <option value="MT">Mato Grosso</option>
-          <option value="MS">Mato Grosso do Sul</option>
-          <option value="MG">Minas Gerais</option>
-          <option value="PA">Pará</option>
-          <option value="PB">Paraíba</option>
-          <option value="PR">Paraná</option>
-          <option value="PE">Pernambuco</option>
-          <option value="PI">Piauí</option>
-          <option value="RJ">Rio de Janeiro</option>
-          <option value="RN">Rio Grande do Norte</option>
-          <option value="RS">Rio Grande do Sul</option>
-          <option value="RO">Rondônia</option>
-          <option value="RR">Roraima</option>
-          <option value="SC">Santa Catarina</option>
-          <option value="SP">São Paulo</option>
-          <option value="SE">Sergipe</option>
-          <option value="TO">Tocantins</option>
-        </select>
-        <select
-          name="tipo"
-          className={styles.select}
-          value={filters.tipo}
-          onChange={handleInputChange}
-        >
-          <option value="">Tipo de Reserva</option>
-          <option value="Quarto">Quarto</option>
-          <option value="Casa">Casa</option>
-          <option value="Apartamento">Apartamento</option>
-          <option value="Salão">Salão</option>
-        </select>
-        <input
-          type="text"
-          name="valmax"
-          placeholder="Preço Máximo"
-          className={styles.input}
-          value={filters.valmax}
-          onChange={handleInputChange}
-        />
-        <input
-          type="text"
-          name="valmin"
-          placeholder="Preço Minimo"
-          className={styles.input}
-          value={filters.valmin}
-          onChange={handleInputChange}
-        />
-        <input
-          type="checkbox"
-          name="petfriendly"
-          id="petFriendly"
-          className={styles.checkbox}
-          checked={filters.petfriendly}
-          onChange={handleInputChange}
-        />
-        <label htmlFor="petFriendly" className={styles.checkboxLabel}>
-          Pet-friendly
-        </label>
-        <input
-          type="checkbox"
-          name="destacado"
-          id="destacado"
-          className={styles.checkbox}
-          checked={filters.destacado}
-          onChange={handleInputChange}
-        />
-        <label htmlFor="destacado" className={styles.checkboxLabel}>
-          Destacado
-        </label>
-        <button onClick={handleSearch} className={styles.button}>
-          Buscar
-        </button>
-      </div>
+      {/* Botão de Busca */}
+      <button onClick={handleSearch} className={`${styles.button} ${styles.wideButton}`}>
+        Buscar por Reservas
+      </button>
 
       {/* Botões de Navegação */}
       <div className={styles.buttonsContainer}>

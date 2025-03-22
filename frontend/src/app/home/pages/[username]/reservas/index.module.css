@@ -1,46 +1,78 @@
 /* frontend/src/app/home/pages/[username]/reservas/index.module.css */
-
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-  background-color: #f9f9f9; /* Fundo claro */
-  padding: 2rem;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #f5f5f5; /* Fundo claro para o restante da página */
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333; /* Cor do título mais suave */
+  }
+  
+  .listContainer {
+    width: 100%;
+    max-width: 600px; /* Limita a largura para melhorar a legibilidade */
+  }
+  
+  .listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .listItem p {
+    font-size: 1rem;
+    color: #666; /* Cor de texto secundária */
+  }
+  
+  .button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white; /* Cor do texto nos botões */
+    background-color: #ff5a5f; /* Cor laranja vibrante */
+  }
+  
+  .button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Estilo para reservas canceladas */
+  .cancelled {
+    background-color: #ffebee; /* Fundo vermelho claro */
+    border: 1px solid #ffcdd2; /* Borda vermelha */
+    color: #c62828; /* Texto vermelho */
+  }
 
-.header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.backButton {
-  text-decoration: none;
-  color: #ff5a5f; /* Cor laranja vibrante */
-  font-weight: bold;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #333; /* Cor do título mais suave */
-}
-
-.listContainer {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem; /* Espaçamento entre os elementos */
-}
-
-.placeholder {
-  font-size: 1.25rem;
-  font-style: italic;
-  color: #777; /* Cor mais suave para o texto de placeholder */
-  text-align: center;
-}
+  .backButton {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white;
+    background-color: #ff5a5f; /* Cor laranja vibrante */
+    margin-right: 1rem;
+  }
+  
+  .backButton:hover {
+    opacity: 0.9;
+  }

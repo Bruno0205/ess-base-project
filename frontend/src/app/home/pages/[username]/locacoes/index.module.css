@@ -1,105 +1,71 @@
 /* frontend/src/app/home/pages/[username]/locacoes/index.module.css */
-
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 80vh;
-  background-color: #f9f9f9; /* Fundo claro */
-  padding: 2rem;
-  position: relative; /* Permite posicionar o botão flutuante */
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    background-color: #f5f5f5; /* Fundo claro para o restante da página */
+    padding: 2rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333; /* Cor do título mais suave */
+  }
+  
+  .listContainer {
+    width: 100%;
+    max-width: 600px; /* Limita a largura para melhorar a legibilidade */
+  }
+  
+  .listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .listItem p {
+    font-size: 1rem;
+    color: #666; /* Cor de texto secundária */
+  }
+  
+  .button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white; /* Cor do texto nos botões */
+    background-color: #ff5a5f; /* Cor laranja vibrante */
+  }
+  
+  .button:hover {
+    opacity: 0.9;
+  }
 
-.header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.backButton {
-  text-decoration: none;
-  color: #ff5a5f; /* Cor laranja vibrante */
-  font-weight: bold;
-}
-
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #333; /* Cor do título mais suave */
-}
-
-.listContainer {
-  width: 100%;
-  max-width: 800px; /* Largura máxima para melhorar a responsividade */
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* Espaçamento entre os cartões */
-}
-
-.card {
-  padding: 1.5rem;
-  border: 1px solid #e0e0e0; /* Borda leve */
-  border-radius: 12px; /* Bordas arredondadas */
-  background-color: white;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombreamento suave */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação suave ao passar o mouse */
-}
-
-.card:hover {
-  transform: translateY(-4px); /* Efeito de elevação ao passar o mouse */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
-}
-
-.card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: #333;
-}
-
-.card p {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #555;
-}
-
-.card .button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  color: white;
-  background-color: #ff5a5f; /* Cor laranja vibrante */
-  transition: background-color 0.2s ease; /* Animação suave ao passar o mouse */
-}
-
-.card .button:hover {
-  background-color: #e64d52; /* Tonalidade mais escura ao passar o mouse */
-}
-
-.floatingButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 56px;
-  height: 56px;
-  background-color: #ff5a5f; /* Cor laranja vibrante */
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 50%; /* Torna o botão redondo */
-  text-decoration: none;
-  position: fixed; /* Fixa o botão na tela */
-  bottom: 20px; /* Distância do fundo */
-  right: 20px; /* Distância da direita */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
-  cursor: pointer;
-  transition: background-color 0.2s ease; /* Animação suave ao passar o mouse */
-}
-
-.floatingButton:hover {
-  background-color: #e64d52; /* Tonalidade mais escura ao passar o mouse */
-}
+  .backButton {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Remove sublinhado dos links */
+    color: white;
+    background-color: #ff5a5f; /* Cor laranja vibrante */
+    margin-right: 1rem;
+  }
+  
+  .backButton:hover {
+    opacity: 0.9;
+  }
