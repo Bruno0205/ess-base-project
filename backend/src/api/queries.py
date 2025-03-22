@@ -18,12 +18,18 @@ UF_SIGLAS = [
 ]
 
 def getDB():
-    with open(os.path.join(os.path.dirname(__file__), '../db/db_reservas.json'), 'r') as dbu:
-        db = json.load(dbu)
+    try:
+        print("Tentando carregar o banco de dados...")
+        with open(os.path.join(os.path.dirname(__file__), '../db/db_reservas.json'), 'r') as dbu:
+            db = json.load(dbu)
+        print("Banco de dados carregado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao carregar o banco de dados: {e}")
+        raise HTTPException(status_code=500, detail="Erro ao carregar o banco de dados")
     
     # Calcular avaliações médias
     avaliacoes = getAvaliacaoDB()
-    for reserva in db:
+    for reserva in db["reservas"]:
         endereco = reserva['endereco']
         notas = [avaliacao['nota'] for avaliacao in avaliacoes if avaliacao['endereco'] == endereco]
         if notas:
@@ -31,11 +37,15 @@ def getDB():
         else:
             reserva['avalMedia'] = 0
     
-    return db
+    return db["reservas"]
 
 def saveDB(db):
-    with open(os.path.join(os.path.dirname(__file__), '../db/db_reservas.json'), 'w') as dbu:
-        json.dump(db, fp=dbu, indent=4)
+    try:
+        with open(os.path.join(os.path.dirname(__file__), '../db/db_reservas.json'), 'w') as dbu:
+            json.dump(db, fp=dbu, indent=4)
+    except Exception as e:
+        print(f"Erro ao salvar o banco de dados: {e}")
+        raise HTTPException(status_code=500, detail="Erro ao salvar o banco de dados")
     return db
 
 @router.get("/reservas")
@@ -51,8 +61,15 @@ async def reservas(
     avaliacao: Optional[Literal['1', '2', '3', '4', '5']] = None,
     destacado: Optional[bool] = None
 ) -> List[Reserva]:
-    db_reservas = getDB()
-    reserva_list = [Reserva(**b) for b in db_reservas]
+    try:
+        print("Recebendo requisição para /reservas...")
+        db_reservas = getDB()
+        print(f"Reservas carregadas: {db_reservas}")
+        reserva_list = [Reserva(**b) for b in db_reservas]
+        print(f"Reservas processadas: {reserva_list}")
+    except Exception as e:
+        print(f"Erro ao processar reservas: {e}")
+        raise HTTPException(status_code=500, detail="Erro ao processar reservas")
 
     if tipo: 
         if tipo not in TipoReserva.__members__.values():
