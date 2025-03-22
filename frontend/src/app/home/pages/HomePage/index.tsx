@@ -28,9 +28,9 @@ const HomePage = () => {
       </div>
 
       {/* Título e Descrição */}
-      <h1 className={styles.title}>Bem-vindo ao Nosso Sistema de Hotelaria</h1>
+      <h1 className={styles.title}>Bem-vindo ao Nido</h1>
       <p className={styles.description}>
-        Alugue seu próximo lar com facilidade e conforto.
+        Um lar onde quer que tenhas que estar.
       </p>
 
       {/* Faixa com Fundo (SVG) */}
@@ -48,7 +48,7 @@ const HomePage = () => {
           ></path>
         </svg>
         <p className={styles.stripText}>
-          Encontre o lugar perfeito para chamar de lar!
+          Encontre o local perfeito para sentir aconchego e criar boas lembranças.
         </p>
       </div>
 

@@ -1,33 +1,73 @@
-// src/app/home/pages/Register/index.tsx
+// frontend/src/app/home/pages/Register/index.tsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import InputMask from "react-input-mask"; // Importa a biblioteca de máscara
 import styles from "./index.module.css";
 
 const Register = () => {
-  // Estado para controlar o tipo de pessoa (física ou jurídica)
   const [isPessoaFisica, setIsPessoaFisica] = useState(true);
+  const navigate = useNavigate();
 
-  // Função para alternar entre Pessoa Física e Jurídica
   const toggleTipoPessoa = () => {
     setIsPessoaFisica((prev) => !prev);
   };
 
-  // Função para lidar com o envio do formulário
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Captura os valores do formulário
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const data: Record<string, string> = {};
+    formData.forEach((value, key) => {
+      data[key] = value.toString();
+    });
 
-    // Validação básica (opcional)
-    if (!data.email || !data.login || !data.senha) {
-      alert("Por favor, preencha todos os campos obrigatórios.");
-      return;
+    try {
+      const url = isPessoaFisica
+        ? "http://127.0.0.1:8000/cadastro/cadastro/pf"
+        : "http://127.0.0.1:8000/cadastro/cadastro/pj";
+
+      const requestBody = isPessoaFisica
+        ? {
+            uf: data.uf,
+            email: data.email,
+            login: data.login,
+            senha: data.senha,
+            cpf: data.cpf,
+            nome: data.nome,
+            nascimento: data.nascimento,
+          }
+        : {
+            uf: data.uf,
+            email: data.email,
+            login: data.login,
+            senha: data.senha,
+            cnpj: data.cnpj,
+            razao_social: data.razao_social,
+          };
+
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json(); // Captura a mensagem de erro do backend
+        throw new Error(errorData.detail || "Erro ao cadastrar usuário");
+      }
+
+      alert("Cadastro realizado com sucesso!");
+      navigate("/login");
+    } catch (error) {
+      // Verifica se o erro é uma instância de Error
+      if (error instanceof Error) {
+        console.error(error.message);
+        alert(error.message); // Exibe a mensagem de erro do backend
+      } else {
+        console.error("Erro desconhecido:", error);
+        alert("Ocorreu um erro desconhecido. Tente novamente.");
+      }
     }
-
-    // Exibe os dados no console para teste
-    console.log("Dados do formulário:", data);
-    alert("Cadastro realizado com sucesso!");
   };
 
   return (
@@ -55,7 +95,7 @@ const Register = () => {
         {/* Campos comuns */}
         <label>
           UF:
-          <input type="text" name="uf" placeholder="Ex: SP" />
+          <input type="text" name="uf" placeholder="Ex: SP" required />
         </label>
 
         <label>
@@ -78,7 +118,14 @@ const Register = () => {
           <>
             <label>
               CPF:
-              <input type="text" name="cpf" required placeholder="000.000.000-00" />
+              <InputMask
+                mask="999.999.999-99"
+                type="text"
+                name="cpf"
+                required
+                placeholder="000.000.000-00"
+                className={styles.input}
+              />
             </label>
 
             <label>
@@ -98,7 +145,14 @@ const Register = () => {
           <>
             <label>
               CNPJ:
-              <input type="text" name="cnpj" required placeholder="00.000.000/0000-00" />
+              <InputMask
+                mask="99.999.999/9999-99"
+                type="text"
+                name="cnpj"
+                required
+                placeholder="00.000.000/0000-00"
+                className={styles.input}
+              />
             </label>
 
             <label>
