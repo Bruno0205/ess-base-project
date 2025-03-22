@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import styles from "./index.module.css";
 import ResultCard from "../../../shared/components/ResultCard/ResultCard";
 
 const SearchResults = () => {
+  interface Reserva {
+    titulo: string;
+    descricao: string;
+    endereco: string;
+    tipo: string;
+    preco: number;
+    petfriendly: boolean;
+    destacado: boolean;
+    imagens: string[];
+  }
+  
+  const [reservas, setReservas] = useState<Reserva[]>([]);
+const location = useLocation();
+
+useEffect(() => {
+    const fetchReservas = async () => {
+      try {
+const query = new URLSearchParams(location.search).toString();
+        const response = await axios.get(`http://127.0.0.1:8000/queries/reservas?${query}`);
+        setReservas(response.data);
+      } catch (error) {
+        console.error("Erro ao buscar reservas:", error);
+      }
+    };
+
+    fetchReservas();
+  }, [location.search]);
+
   return (
     <div className={styles.container}>
-      
-        {/* Logo (SVG) */}
-      <div className={styles.logo}>
+            <div className={styles.logo}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           x="0px"
@@ -15,7 +43,7 @@ const SearchResults = () => {
           width="100"
           height="100"
           viewBox="0,0,256,256"
-          style={{ mixBlendMode: "normal" }} // Corrigido para usar objeto no estilo
+          style={{ mixBlendMode: "normal" }}
         >
           <g fill="none" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none">
             <g transform="scale(0.5,0.5)">
@@ -30,28 +58,19 @@ const SearchResults = () => {
 
       <h1 className={styles.title}>Resultados da Busca</h1>
       <div className={styles.resultsContainer}>
-        {/* Usando o componente compartilhado ResultCard */}
+        {reservas.map((reserva) => (
         <ResultCard
-          title="Título do Resultado"
-          description="Descrição do resultado..."
-          state="São Paulo"
-          reservationType="Apartamento"
-          price="R$ 200,00"
-          petFriendly={true}
-          highlighted={false}
-          imageUrl="/path/to/image.jpg"
-        />
-        <ResultCard
-          title="Outro Resultado"
-          description="Descrição do outro resultado..."
-          state="Rio de Janeiro"
-          reservationType="Casa"
-          price="R$ 350,00"
-          petFriendly={false}
-          highlighted={true}
-          imageUrl="/path/to/image.jpg"
-        />
-        {/* Adicione mais ResultCard conforme necessário */}
+          key={reserva.titulo}
+            title={reserva.titulo}
+            description={reserva.descricao}
+            state={reserva.endereco.split(", ").pop() || ""}
+            reservationType={reserva.tipo}
+            price={`R$ ${reserva.preco}`}
+            petFriendly={reserva.petfriendly}
+          highlighted={reserva.destacado}
+          imageUrl={`/path/to/image/${reserva.imagens[0]}`}
+          />
+        ))}
       </div>
     </div>
   );

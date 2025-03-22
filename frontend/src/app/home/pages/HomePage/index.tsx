@@ -1,8 +1,39 @@
 // src/app/home/pages/Home/index.tsx
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./index.module.css";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const [filters, setFilters] = useState({
+    estado: "",
+    tipo: "",
+    valmax: "",
+    valmin: "",
+    petfriendly: false,
+    destacado: false,
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFilters({
+      ...filters,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
+
+  const handleSearch = () => {
+    const query = new URLSearchParams(
+      Object.entries(filters)
+        .filter(([key, value]) => value !== "" && value !== false)
+        .reduce((acc, [key, value]) => {
+          acc[key] = value.toString();
+          return acc;
+        }, {})
+    ).toString();
+    navigate(`/search?${query}`);
+  };
+
   return (
     <div className={styles.container}>
       {/* Logo (SVG) */}
@@ -52,20 +83,14 @@ const HomePage = () => {
         </p>
       </div>
 
-      {/* Barra de Pesquisa */}
-      <div className={styles.searchContainer}>
-        <input
-          type="text"
-          placeholder="Encontre Reserva"
-          className={styles.searchInput}
-        />
-        <a href="/search" type="submit" className={styles.button}>
-          Buscar
-        </a>
-      </div>
       {/* Filters */}
       <div className={styles.filtersContainer}>
-      <select className={styles.select}>
+        <select
+          name="estado"
+          className={styles.select}
+          value={filters.estado}
+          onChange={handleInputChange}
+        >
           <option value="">Estado</option>
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
@@ -95,41 +120,60 @@ const HomePage = () => {
           <option value="SE">Sergipe</option>
           <option value="TO">Tocantins</option>
         </select>
-        <select className={styles.select}>
+        <select
+          name="tipo"
+          className={styles.select}
+          value={filters.tipo}
+          onChange={handleInputChange}
+        >
           <option value="">Tipo de Reserva</option>
-          <option value="AC">Qaurto</option>
-          <option value="AL">Casa</option>
-          <option value="AP">Apartamento</option>
-          <option value="AM">Salão</option>
+          <option value="Quarto">Quarto</option>
+          <option value="Casa">Casa</option>
+          <option value="Apartamento">Apartamento</option>
+          <option value="Salão">Salão</option>
         </select>
         <input
           type="text"
+          name="valmax"
           placeholder="Preço Máximo"
           className={styles.input}
+          value={filters.valmax}
+          onChange={handleInputChange}
         />
         <input
           type="text"
+          name="valmin"
           placeholder="Preço Minimo"
           className={styles.input}
+          value={filters.valmin}
+          onChange={handleInputChange}
         />
         <input
           type="checkbox"
+          name="petfriendly"
           id="petFriendly"
           className={styles.checkbox}
+          checked={filters.petfriendly}
+          onChange={handleInputChange}
         />
         <label htmlFor="petFriendly" className={styles.checkboxLabel}>
           Pet-friendly
         </label>
         <input
           type="checkbox"
+          name="destacado"
           id="destacado"
           className={styles.checkbox}
+          checked={filters.destacado}
+          onChange={handleInputChange}
         />
         <label htmlFor="destacado" className={styles.checkboxLabel}>
           Destacado
         </label>
+        <button onClick={handleSearch} className={styles.button}>
+          Buscar
+        </button>
       </div>
-
 
       {/* Botões de Navegação */}
       <div className={styles.buttonsContainer}>
