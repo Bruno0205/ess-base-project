@@ -57,9 +57,10 @@ const query = new URLSearchParams(location.search).toString();
       </div>
 
       <h1 className={styles.title}>Resultados da Busca</h1>
-      <div className={styles.resultsContainer}>
+      <div className={styles.resultsContainer}> Resultados de sua busca:
         {reservas.map((reserva) => (
         <ResultCard
+          data-testid="result-card"
           key={reserva.titulo}
             title={reserva.titulo}
             description={reserva.descricao}

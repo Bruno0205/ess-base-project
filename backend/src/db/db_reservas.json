@@ -29,6 +29,36 @@
             "qntdAlugado": 10,
             "destacado": true,
             "temporada": "string"
+        },
+        {
+            "ativo": true,
+            "titulo": "Casa Beira Mar",
+            "descricao": "Casa com vista para o mar, ideal para férias em família.",
+            "imagens": [
+                "casa_mar.jpg"
+            ],
+            "petfriendly": true,
+            "endereco": "Avenida Atlântica, 456, Boa Viagem, PE",
+            "tipo": "Casa",
+            "disponibilidade": {
+                "inicio": "2025-03-01",
+                "fim": "2025-03-15"
+            },
+            "alugado": [
+                {
+                    "inicio": "2025-03-05",
+                    "fim": "2025-03-10"
+                }
+            ],
+            "preco": 500,
+            "usuario": "jdoe@example.com",
+            "alugado_por": [
+                ""
+            ],
+            "avalMedia": 4.8,
+            "qntdAlugado": 5,
+            "destacado": true,
+            "temporada": "string"
         }
     ]
 }
