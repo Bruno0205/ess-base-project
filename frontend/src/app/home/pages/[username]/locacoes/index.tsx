@@ -1,43 +1,14 @@
 // frontend/src/app/home/pages/[username]/locacoes/index.tsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import styles from "./index.module.css";
 
-// Definição do tipo para as reservas
-interface Reserva {
-  id: number;
-  titulo: string;
-  disponibilidade: {
-    inicio: string; // Data no formato ISO (ex.: "2023-11-01")
-    fim: string;   // Data no formato ISO (ex.: "2023-11-10")
-  };
-  preco: number;
-  petfriendly: boolean;
-}
-
 const MinhasLocacoes = () => {
   const { username } = useParams(); // Captura o parâmetro :username da URL
-  const [reservas, setReservas] = useState<Reserva[]>([]); // Estado com tipo explícito
-
-  // Função para buscar as reservas do usuário no backend
-  const fetchReservas = async () => {
-    try {
-      const response = await fetch(`http://127.0.0.1:8000/cadastro-reservas/reservas/${username}`); // Usa o username dinâmico
-      if (!response.ok) {
-        throw new Error("Erro ao carregar as reservas");
-      }
-
-      const data: Reserva[] = await response.json(); // Define o tipo dos dados recebidos
-      setReservas(data);
-    } catch (error) {
-      console.error("Erro ao buscar reservas:", error);
-    }
-  };
-
-  // Executa a busca das reservas quando o componente é montado
-  useEffect(() => {
-    fetchReservas();
-  }, [username]);
+  const locacoes = [
+    { id: 1, periodo: "01/11/2023 - 10/11/2023" },
+    { id: 2, periodo: "15/11/2023 - 25/11/2023" },
+  ];
 
   return (
     <div className={styles.container}>
@@ -48,23 +19,11 @@ const MinhasLocacoes = () => {
         </Link>
         <h1 className={styles.title}>Minhas Locações</h1>
       </div>
-
       <div className={styles.listContainer}>
-        {reservas.length > 0 ? (
-          reservas.map((reserva) => (
-            <div key={reserva.id} className={styles.card}>
-              <h3>{reserva.titulo}</h3>
-              <p>
-                <strong>Período:</strong>{" "}
-                {new Date(reserva.disponibilidade.inicio).toLocaleDateString()} -{" "}
-                {new Date(reserva.disponibilidade.fim).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Preço:</strong> R$ {reserva.preco.toFixed(2)}
-              </p>
-              <p>
-                <strong>Aceita Pets:</strong> {reserva.petfriendly ? "Sim" : "Não"}
-              </p>
+        {locacoes.length > 0 ? (
+          locacoes.map((locacao) => (
+            <div key={locacao.id} className={styles.listItem}>
+              <p>{locacao.periodo}</p>
               <button className={styles.button}>Ver Detalhes</button>
             </div>
           ))
@@ -72,11 +31,6 @@ const MinhasLocacoes = () => {
           <p>Você ainda não possui locações.</p>
         )}
       </div>
-
-      {/* Botão flutuante redondo com o símbolo de + */}
-      <Link to={`/usuario/${username}/reservas/addReserva`} className={styles.floatingButton}>
-        +
-      </Link>
     </div>
   );
 };

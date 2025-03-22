@@ -30,22 +30,6 @@
             "tipo_pessoa": "juridica",
             "cnpj": "12.331.231/2312-32",
             "razao_social": "Engecorp Engenharia LTDA"
-        },
-        {
-            "ativo": true,
-            "uf": "PB",
-            "email": "bcs6@asdas1e.br",
-            "login": "BruhPF",
-            "senha": "Senha123",
-            "liberado": false,
-            "codigo_verificacao": null,
-            "codigo_valido_ate": null,
-            "reset_token": null,
-            "reset_token_expira": null,
-            "tipo_pessoa": "fisica",
-            "cpf": "123.123.312-23",
-            "nome": "Bruno Carvalho",
-            "nascimento": "12/12/2000"
         }
     ]
 }
