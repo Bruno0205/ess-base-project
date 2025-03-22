@@ -2,33 +2,80 @@
     "reservas": [
         {
             "ativo": true,
-            "titulo": "Residencia Schrader",
-            "descricao": "Teste de descricao que ajude ela a ter 20 caracteres no minimo para que seja aceita.",
+            "titulo": "Lindo Solar de Ver\u00e3o",
+            "descricao": "Uma linda casa de campo com belos jardins e bonitas flores primaveris.",
             "imagens": [
-                "casa_praia.jpg"
+                "image1",
+                "imagem2",
+                "imagem3",
+                "imagem4"
             ],
             "petfriendly": true,
-            "endereco": "Rua das Flores, 123, Praia Grande, PE",
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
             "tipo": "Casa",
             "disponibilidade": {
-                "inicio": "2025-02-10",
-                "fim": "2025-02-20"
+                "inicio": "2025-03-20",
+                "fim": "2025-05-02"
             },
-            "alugado": [
-                {
-                    "inicio": "2025-02-11",
-                    "fim": "2025-02-19"
-                }
+            "alugado": [],
+            "preco": 150,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": []
+        },
+        {
+            "ativo": true,
+            "titulo": "Apartamento Aconchegante",
+            "descricao": "Um belo apartamento com vista para o mar na praia de Boa Viagem.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
             ],
-            "preco": 500,
-            "usuario": "bcs6@cin.ufpe.br",
-            "alugado_por": [
-                ""
+            "petfriendly": false,
+            "endereco": "Rua 13 de julho, Boa Viagem, Recife, PE",
+            "tipo": "Apartamento",
+            "disponibilidade": {
+                "inicio": "2025-04-01",
+                "fim": "2025-05-01"
+            },
+            "alugado": [],
+            "preco": 200,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": []
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "A Engercorp disponibilizou 3 dos seus 10 sal\u00f5es premiuns para que outras empresas possam utilizar de seu espa\u00e7o com um atendimento, local, localiza\u00e7\u00e3o e experi\u00eancia impac\u00e1veis. ",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3",
+                "imagem4"
             ],
-            "avalMedia": 4.5,
-            "qntdAlugado": 10,
-            "destacado": true,
-            "temporada": "string"
+            "petfriendly": false,
+            "endereco": "Rua dos fardos, Heliorto, Rio de Janeiro, RJ",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-01",
+                "fim": "2025-04-30"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "Engecorp",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": []
         }
     ]
 }
