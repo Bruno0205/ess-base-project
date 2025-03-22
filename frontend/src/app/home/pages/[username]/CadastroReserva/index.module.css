@@ -1,0 +1,73 @@
+/* frontend/src/app/home/pages/AddReserva/index.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  background-color: #f5f5f5; /* Fundo claro */
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333; /* Cor do título mais suave */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaçamento entre os campos */
+  width: 100%;
+  max-width: 400px; /* Largura máxima para responsividade */
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555; /* Cor mais suave para os rótulos */
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc; /* Borda cinza clara */
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333; /* Cor do texto nos inputs */
+}
+
+.textarea {
+  height: 100px; /* Altura fixa para a descrição */
+  resize: none; /* Impede que o usuário redimensione manualmente */
+}
+
+.dateGroup {
+  display: flex;
+  gap: 8px; /* Espaçamento entre as datas */
+}
+
+.checkbox {
+  margin-left: 8px; /* Espaçamento entre o texto e o checkbox */
+}
+
+.button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Cor do texto nos botões */
+  background-color: #ff5a5f; /* Cor laranja vibrante */
+}
+
+.button:hover {
+  opacity: 0.9;
+}
