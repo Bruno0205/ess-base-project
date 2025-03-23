@@ -95,6 +95,37 @@ async def reservas(
 
     return reserva_list
 
+@router.get("/reservas/{reserva_name}")
+async def get_reserva(reserva_name: str) -> Reserva:
+    try:
+        db_reservas = getDB()
+        for reserva in db_reservas:
+            if reserva['titulo'].lower().replace(" ", "-") == reserva_name:
+                return Reserva(**reserva)
+        raise HTTPException(status_code=404, detail="Reserva não encontrada")
+    except Exception as e:
+        print(f"Erro ao buscar reserva: {e}")
+        raise HTTPException(status_code=500, detail="Erro ao buscar reserva")
+
+@router.get("/avaliacoes/{reserva_name}")
+async def get_avaliacoes(reserva_name: str) -> List[Avaliacao]:
+    try:
+        db_reservas = getDB()
+        for reserva in db_reservas:
+            if reserva['titulo'].lower().replace(" ", "-") == reserva_name:
+                endereco = reserva['endereco']
+                break
+        else:
+            raise HTTPException(status_code=404, detail="Reserva não encontrada")
+
+        avaliacoes = getAvaliacaoDB()
+        avaliacoes_reserva = [Avaliacao(**avaliacao) for avaliacao in avaliacoes if avaliacao['endereco'] == endereco]
+
+        return avaliacoes_reserva
+    except Exception as e:
+        print(f"Erro ao buscar avaliações: {e}")
+        raise HTTPException(status_code=500, detail="Erro ao buscar avaliações")
+
 app.include_router(router)
 
 if __name__ == "__main__":
