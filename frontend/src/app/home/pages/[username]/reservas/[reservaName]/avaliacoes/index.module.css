@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 100vh;
   background-color: #f5f5f5; /* Fundo claro para o restante da página */
   padding: 2rem;
 }
@@ -28,23 +28,77 @@
 }
 
 .avaliacao {
-  padding: 16px;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0; /* Borda leve */
+  border-radius: 12px; /* Bordas arredondadas */
+  background-color: white;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombreamento suave */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação suave ao passar o mouse */
+  margin-bottom: 16px;
+}
+
+.avaliacao:hover {
+  transform: translateY(-4px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 800px;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-top: 2rem;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #fff;
+  font-size: 1rem;
+}
+
+.form button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Cor do texto nos botões */
+  background-color: #ff5a5f; /* Cor laranja vibrante */
+}
+
+.form button:hover {
+  opacity: 0.9;
 }
 
 .button {
-  padding: 8px 16px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
+  margin-top: 1.5rem;
+  padding: 12px 24px;
   border: none;
   border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  margin-top: 8px;
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Cor do texto nos botões */
+  background-color: #ff5a5f; /* Cor laranja vibrante */
 }
 
 .button:hover {
-  background-color: #0056b3;
+  opacity: 0.9;
+}
+
+.successMessage {
+  color: green;
+  font-size: 1.2rem;
+  margin-top: 1rem;
 }

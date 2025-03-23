@@ -80,7 +80,7 @@ async def reservas(
     if uf:
         if uf.upper() not in UF_SIGLAS:
             raise HTTPException(status_code=400, detail="UF inválido")
-        reserva_list = [b for b in reserva_list if b.endereco.lower().endswith(uf.lower())]
+        reserva_list = [b for b in reserva_list if b.endereco.split(",")[-1].strip().upper() == uf.upper()]
     if valmax:
         reserva_list = [b for b in reserva_list if b.preco <= valmax]
     if valmin:

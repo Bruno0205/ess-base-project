@@ -49,6 +49,7 @@ const SearchResults = () => {
   }
 
   const [reservas, setReservas] = useState<Reserva[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -57,13 +58,22 @@ const SearchResults = () => {
         const query = new URLSearchParams(location.search).toString();
         const response = await axios.get(`http://127.0.0.1:8000/queries/reservas?${query}`);
         setReservas(response.data);
+        setError(null); // Clear any previous errors
       } catch (error) {
-        console.error("Erro ao buscar reservas:", error);
+        if (axios.isAxiosError(error) && error.response?.status === 404) {
+          setReservas([]);
+          setError("Ops! Nenhuma reserva foi encontrada dentro de seus parâmetros :/");
+        } else {
+          console.error("Erro ao buscar reservas:", error);
+          setError("Erro ao buscar reservas. Tente novamente mais tarde.");
+        }
       }
     };
 
     fetchReservas();
   }, [location.search]);
+
+  const isFiltersEmpty = Object.values(filters).every(value => value === "" || value === false);
 
   return (
     <div className={styles.container}>
@@ -77,7 +87,9 @@ const SearchResults = () => {
         />
       </div>
 
-      <h1 className={styles.title}>Resultados da Busca</h1>
+      <h1 className={styles.title}>
+        {isFiltersEmpty ? "Filtre sua reserva dos sonhos!" : "Filtre sua reserva dos sonhos!"}
+      </h1>
       <div className={styles.resultsContainer}>
         {/* Filters */}
         <div className={styles.filtersContainer}>
@@ -171,22 +183,30 @@ const SearchResults = () => {
           </button>
         </div>
 
-        {reservas.map((reserva) => (
-          <ResultCard
-            data-testid="result-card"
-            key={reserva.titulo}
-            title={reserva.titulo}
-            description={reserva.descricao}
-            state={reserva.endereco.split(", ").pop() || ""}
-            reservationType={reserva.tipo}
-            price={`R$ ${reserva.preco}`}
-            petFriendly={reserva.petfriendly}
-            highlighted={reserva.destacado}
-            imageUrl={`/path/to/image/${reserva.imagens[0]}`}
-            username={reserva.usuario} // Adicionado
-            reservaName={reserva.titulo.toLowerCase().replace(/\s+/g, "-")} // Adicionado
-          />
-        ))}
+        {error ? (
+          <p className={styles.noResults}>{error}</p>
+        ) : (
+          reservas.length > 0 ? (
+            reservas.map((reserva) => (
+              <ResultCard
+                data-testid="result-card"
+                key={reserva.titulo}
+                title={reserva.titulo}
+                description={reserva.descricao}
+                state={reserva.endereco.split(", ").pop() || ""}
+                reservationType={reserva.tipo}
+                price={`R$ ${reserva.preco}`}
+                petFriendly={reserva.petfriendly}
+                highlighted={reserva.destacado}
+                imageUrl={`/path/to/image/${reserva.imagens[0]}`}
+                username={reserva.usuario} // Adicionado
+                reservaName={reserva.titulo.toLowerCase().replace(/\s+/g, "-")} // Adicionado
+              />
+            ))
+          ) : (
+            <p className={styles.noResults}>Ops! Nenhuma reserva foi encontrada dentro de seus parâmetros :/</p>
+          )
+        )}
       </div>
     </div>
   );

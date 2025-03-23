@@ -1,11 +1,18 @@
 .resultItem {
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0; /* Borda leve */
+  border-radius: 12px; /* Bordas arredondadas */
+  background-color: white;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombreamento suave */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação suave ao passar o mouse */
   display: flex;
   justify-content: space-between;
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
   margin-bottom: 16px;
+}
+
+.resultItem:hover {
+  transform: translateY(-4px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
 }
 
 .resultContent {
@@ -13,16 +20,15 @@
 }
 
 .resultTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
   color: #333;
-  margin-bottom: 0.5rem;
 }
 
 .resultDescription {
   font-size: 1rem;
-  color: #666;
   margin-bottom: 0.5rem;
+  color: #555;
 }
 
 .resultDetailContainer {
@@ -47,16 +53,18 @@
 }
 
 .button {
-  padding: 8px 16px;
-  font-size: 1rem;
-  color: #fff;
-  background-color: #007bff;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
+  color: white;
+  background-color: #ff5a5f; /* Cor laranja vibrante */
+  transition: background-color 0.2s ease; /* Animação suave ao passar o mouse */
   margin-top: 8px;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  background-color: #e64d52; /* Tonalidade mais escura ao passar o mouse */
 }

@@ -38,7 +38,7 @@ export default defineConfig({
 
       return config;
     },
-    baseUrl: "http://localhost:3008",
+    baseUrl: "http://localhost:3000",
     specPattern: "cypress/e2e/**/*.feature",
   },
 });
