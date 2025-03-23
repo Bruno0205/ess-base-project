@@ -28,10 +28,18 @@
 }
 
 .avaliacao {
-  padding: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0; /* Borda leve */
+  border-radius: 12px; /* Bordas arredondadas */
+  background-color: white;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombreamento suave */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação suave ao passar o mouse */
+  margin-bottom: 16px;
+}
+
+.avaliacao:hover {
+  transform: translateY(-4px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
 }
 
 .form {
@@ -73,6 +81,7 @@
 }
 
 .button {
+  margin-top: 1.5rem;
   padding: 12px 24px;
   border: none;
   border-radius: 4px;

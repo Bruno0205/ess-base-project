@@ -14,7 +14,7 @@ interface Avaliacao {
 }
 
 const AvaliacoesPage = () => {
-  const { reservaName } = useParams();
+  const { username, reservaName } = useParams();
   const navigate = useNavigate();
   const [avaliacoes, setAvaliacoes] = useState<Avaliacao[]>([]);
   const [reservaTitulo, setReservaTitulo] = useState<string>("");
@@ -107,7 +107,7 @@ const AvaliacoesPage = () => {
         />
         <button type="submit" className={styles.button}>Enviar Avaliação</button>
       </form>
-      <button onClick={() => navigate(-1)} className={styles.button}>Voltar</button>
+      <button onClick={() => navigate(`/usuario/${username}/reservas/${reservaName}`)} className={styles.button}>Voltar</button>
     </div>
   );
 };
