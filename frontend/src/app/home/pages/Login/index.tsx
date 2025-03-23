@@ -1,4 +1,5 @@
 // frontend/src/app/home/pages/Login/index.tsx
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -51,6 +52,7 @@ const LoginPage = () => {
                 onChange={(e) => setLogin(e.target.value)}
                 className={styles.input}
                 required
+                data-cy="Login" // Adicionado atributo data-cy
               />
             </label>
             <label className={styles.label}>
@@ -61,9 +63,10 @@ const LoginPage = () => {
                 onChange={(e) => setSenha(e.target.value)}
                 className={styles.input}
                 required
+                data-cy="Senha" // Adicionado atributo data-cy
               />
             </label>
-            <button type="submit" className={styles.button}>
+            <button type="submit" className={styles.button} data-cy="Entrar">
               Entrar
             </button>
             <p className={styles.link}>
