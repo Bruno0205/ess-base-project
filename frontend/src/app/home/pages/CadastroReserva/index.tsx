@@ -1,196 +1,234 @@
-// src/app/home/pages/RegisterReservation/index.tsx
-import React, { useState } from "react";
-import styles from "./index.module.css";
-
-// Tipos de reserva (baseado no Enum TipoReserva)
-const TIPO_RESERVA = [
-  { value: "Quarto", label: "Quarto" },
-  { value: "Casa", label: "Casa" },
-  { value: "Apartamento", label: "Apartamento" },
-  { value: "Salão", label: "Salão" },
-];
-
-const RegisterReservation = () => {
-  // Estado para armazenar os dados da reserva
-  const [reservationData, setReservationData] = useState({
-    titulo: "",
-    descricao: "",
-    imagens: [] as string[],
-    petfriendly: false,
-    endereco: "",
-    tipo: "Quarto", // Valor padrão
-    inicio: "",
-    fim: "",
-    preco: 0,
-  });
-
-  // Função para atualizar os campos do formulário
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type, checked } = e.target;
-
-    // Lógica para checkbox (petfriendly)
-    if (type === "checkbox") {
-      setReservationData((prev) => ({
-        ...prev,
-        [name]: checked,
-      }));
-    } else {
-      setReservationData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
-  };
-
-  // Função para lidar com o envio do formulário
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    // Validação básica
-    if (!reservationData.titulo || !reservationData.endereco || !reservationData.inicio || !reservationData.fim) {
-      alert("Por favor, preencha todos os campos obrigatórios.");
-      return;
-    }
-
-    // Exibe os dados no console para teste
-    console.log("Dados da reserva:", reservationData);
-    alert("Reserva realizada com sucesso!");
-  };
-
-  return (
-    <div className={styles.container}>
-      <h1>Cadastro de Reserva</h1>
-
-      {/* Formulário de Cadastro de Reserva */}
-      <form onSubmit={handleSubmit} className={styles.form}>
-        {/* Título */}
-        <label>
-          Título:
-          <input
-            type="text"
-            name="titulo"
-            value={reservationData.titulo}
-            onChange={handleChange}
-            required
-            placeholder="Ex: Casa na praia"
-          />
-        </label>
-
-        {/* Descrição */}
-        <label>
-          Descrição:
-          <textarea
-            name="descricao"
-            value={reservationData.descricao}
-            onChange={handleChange}
-            placeholder="Descreva a reserva..."
-          />
-        </label>
-
-        {/* Imagens */}
-        <label>
-          URLs das Imagens (separadas por vírgula):
-          <input
-            type="text"
-            name="imagens"
-            value={reservationData.imagens.join(",")}
-            onChange={(e) => {
-              const value = e.target.value;
-              setReservationData((prev) => ({
-                ...prev,
-                imagens: value.split(",").map((url) => url.trim()),
-              }));
-            }}
-            placeholder="https://exemplo.com/imagem1.jpg, https://exemplo.com/imagem2.jpg"
-          />
-        </label>
-
-        {/* Pet Friendly */}
-        <label>
-          Aceita Pets:
-          <input
-            type="checkbox"
-            name="petfriendly"
-            checked={reservationData.petfriendly}
-            onChange={handleChange}
-          />
-        </label>
-
-        {/* Endereço */}
-        <label>
-          Endereço:
-          <input
-            type="text"
-            name="endereco"
-            value={reservationData.endereco}
-            onChange={handleChange}
-            required
-            placeholder="Rua dos Bobos, nº 0"
-          />
-        </label>
-
-        {/* Tipo de Reserva */}
-        <label>
-          Tipo de Reserva:
-          <select
-            name="tipo"
-            value={reservationData.tipo}
-            onChange={handleChange}
-            required
-          >
-            {TIPO_RESERVA.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-        </label>
-
-        {/* Período de Disponibilidade */}
-        <label>
-          Data de Início:
-          <input
-            type="date"
-            name="inicio"
-            value={reservationData.inicio}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        <label>
-          Data de Fim:
-          <input
-            type="date"
-            name="fim"
-            value={reservationData.fim}
-            onChange={handleChange}
-            required
-          />
-        </label>
-
-        {/* Preço */}
-        <label>
-          Preço (R$):
-          <input
-            type="number"
-            name="preco"
-            value={reservationData.preco}
-            onChange={handleChange}
-            min="0"
-            placeholder="Ex: 500"
-          />
-        </label>
-
-        {/* Botão de Envio */}
-        <button type="submit" className={styles.submitButton}>
-          Cadastrar Reserva
-        </button>
-      </form>
-    </div>
-  );
-};
-
-export default RegisterReservation;
+import React, { useState, useEffect } from "react";
+ import { useNavigate, useParams } from "react-router-dom";
+ import styles from "./index.module.css";
+ 
+ const AddReserva = () => {
+   const { username } = useParams(); // Captura o parâmetro :username da URL
+   const [formData, setFormData] = useState({
+     titulo: "",
+     descricao: "",
+     imagens: [] as string[], // Array para armazenar os links das imagens
+     petfriendly: false,
+     endereco: "",
+     tipo: "Quarto", // Valor padrão
+     disponibilidadeInicio: "",
+     disponibilidadeFim: "",
+     preco: 0,
+     usuario: username || "", // Usa o username diretamente como valor inicial (flag)
+   });
+ 
+   const navigate = useNavigate();
+ 
+   // Função para lidar com mudanças nos campos do formulário
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+     const { name, value, type } = e.target;
+ 
+     const fieldValue =
+       type === "checkbox"
+         ? (e.target as HTMLInputElement).checked
+         : value;
+ 
+     // Trata o campo de imagens (divide os links por vírgula)
+     if (name === "imagens") {
+       setFormData((prev) => ({
+         ...prev,
+         imagens: value.split(",").map((link) => link.trim()), // Divide os links por vírgula e remove espaços
+       }));
+     } else {
+       setFormData((prev) => ({
+         ...prev,
+         [name]: fieldValue,
+       }));
+     }
+   };
+ 
+   // Função para lidar com o envio do formulário
+   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+     e.preventDefault();
+ 
+     // Validação básica
+     if (!formData.titulo || !formData.descricao || !formData.disponibilidadeInicio || !formData.disponibilidadeFim) {
+       alert("Por favor, preencha todos os campos obrigatórios.");
+       return;
+     }
+ 
+     if (formData.descricao.length < 20) {
+       alert("A descrição deve ter no mínimo 20 caracteres.");
+       return;
+     }
+ 
+     try {
+       const requestBody = {
+         titulo: formData.titulo,
+         descricao: formData.descricao,
+         imagens: formData.imagens, // Inclui os links das imagens no corpo da requisição
+         petfriendly: formData.petfriendly,
+         endereco: formData.endereco,
+         tipo: formData.tipo,
+         disponibilidade: {
+           inicio: formData.disponibilidadeInicio,
+           fim: formData.disponibilidadeFim,
+         },
+         preco: parseFloat(formData.preco.toString()) || 0,
+         usuario: formData.usuario, // Usa o login (username) como usuário (flag)
+       };
+ 
+       const response = await fetch("http://127.0.0.1:8000/cadastro-reservas/add_reserva", {
+         method: "POST",
+         headers: { "Content-Type": "application/json" },
+         body: JSON.stringify(requestBody),
+       });
+ 
+       if (!response.ok) {
+         const errorData = await response.json();
+         throw new Error(errorData.detail || "Erro ao adicionar reserva");
+       }
+ 
+       alert("Reserva publicada com sucesso!");
+       navigate(`/usuario/${username}/locacoes`);
+     } catch (error) {
+       console.error(error);
+       alert(error instanceof Error ? error.message : "Erro ao adicionar reserva");
+     }
+   };
+ 
+   return (
+     <div className={styles.container}>
+       <h1>Adicionar Nova Reserva</h1>
+       <form onSubmit={handleSubmit} className={styles.form}>
+         {/* Título */}
+         <label>
+           Título:
+           <input
+             type="text"
+             name="titulo"
+             value={formData.titulo}
+             onChange={handleChange}
+             placeholder="Título da reserva"
+             required
+             className={styles.input}
+           />
+         </label>
+ 
+         {/* Descrição */}
+         <label>
+           Descrição:
+           <textarea
+             name="descricao"
+             value={formData.descricao}
+             onChange={handleChange}
+             placeholder="Descreva sua reserva (mínimo 20 caracteres)"
+             required
+             className={styles.textarea}
+           />
+         </label>
+ 
+         {/* Links de imagens */}
+         <label>
+           Links de Imagens:
+           <input
+             type="text"
+             name="imagens"
+             value={formData.imagens.join(", ")} // Exibe os links separados por vírgula
+             onChange={handleChange}
+             placeholder="Insira links de imagens separados por vírgula"
+             className={styles.input}
+           />
+         </label>
+ 
+         {/* Endereço */}
+         <label>
+           Endereço:
+           <input
+             type="text"
+             name="endereco"
+             value={formData.endereco}
+             onChange={handleChange}
+             placeholder="Endereço da reserva"
+             required
+             className={styles.input}
+           />
+         </label>
+ 
+         {/* Tipo */}
+         <label>
+           Tipo:
+           <select
+             name="tipo"
+             value={formData.tipo}
+             onChange={handleChange}
+             className={styles.select}
+           >
+             <option value="Quarto">Quarto</option>
+             <option value="Casa">Casa</option>
+             <option value="Apartamento">Apartamento</option>
+             <option value="Salão">Salão</option>
+           </select>
+         </label>
+ 
+         {/* Período de Disponibilidade */}
+         <div className={styles.dateGroup}>
+           <label>
+             Início da Disponibilidade:
+             <input
+               type="date"
+               name="disponibilidadeInicio"
+               value={formData.disponibilidadeInicio}
+               onChange={handleChange}
+               required
+               className={styles.input}
+             />
+           </label>
+           <label>
+             Fim da Disponibilidade:
+             <input
+               type="date"
+               name="disponibilidadeFim"
+               value={formData.disponibilidadeFim}
+               onChange={handleChange}
+               required
+               className={styles.input}
+             />
+           </label>
+         </div>
+ 
+         {/* Preço */}
+         <label>
+           Preço Diária:
+           <input
+             type="number"
+             name="preco"
+             value={formData.preco}
+             onChange={handleChange}
+             placeholder="Preço da reserva"
+             min="0"
+             step="0.01"
+             required
+             className={styles.input}
+           />
+         </label>
+ 
+         {/* Pet Friendly */}
+         <div className={styles.petFriendlyContainer}>
+           <label className={styles.petFriendlyLabel}>
+             <input
+               type="checkbox"
+               name="petfriendly"
+               checked={formData.petfriendly}
+               onChange={handleChange}
+               className={styles.checkbox}
+             />
+             Aceita Pets?
+           </label>
+         </div>
+ 
+         {/* Botão de Envio */}
+         <button type="submit" className={styles.button}>
+           Publicar Reserva
+         </button>
+       </form>
+     </div>
+   );
+ };
+ 
+ export default AddReserva;

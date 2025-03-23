@@ -1,5 +1,3 @@
-// frontend/src/app/home/pages/Login/index.tsx
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -15,6 +13,7 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
+      // Envia os dados como query parameters
       const url = `http://localhost:8000/login/auth?login=${encodeURIComponent(login)}&senha=${encodeURIComponent(senha)}`;
       const response = await fetch(url, {
         method: "POST",
@@ -52,7 +51,7 @@ const LoginPage = () => {
                 onChange={(e) => setLogin(e.target.value)}
                 className={styles.input}
                 required
-                data-cy="Login" // Adicionado atributo data-cy
+                data-cy="Login"
               />
             </label>
             <label className={styles.label}>
@@ -63,7 +62,7 @@ const LoginPage = () => {
                 onChange={(e) => setSenha(e.target.value)}
                 className={styles.input}
                 required
-                data-cy="Senha" // Adicionado atributo data-cy
+                data-cy="Senha"
               />
             </label>
             <button type="submit" className={styles.button} data-cy="Entrar">
@@ -75,8 +74,6 @@ const LoginPage = () => {
                 Clique aqui
               </a>
             </p>
-
-            {/* Botão de cadastro */}
             <p className={styles.link}>
               Você ainda não tem cadastro?{" "}
               <a href="/register" className={styles.resetLink}>

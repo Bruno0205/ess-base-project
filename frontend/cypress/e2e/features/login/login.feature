@@ -1,4 +1,8 @@
-Feature: Testar o fluxo de login
+Feature: Login do Usuário
+
+  Como um usuário do sistema,
+  quero fazer login com minhas credenciais,
+  para acessar minha página pessoal.
 
   Scenario: Login bem-sucedido com credenciais válidas
     Given o usuário está na página "/login"
