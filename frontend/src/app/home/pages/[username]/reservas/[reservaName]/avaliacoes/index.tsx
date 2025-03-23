@@ -26,6 +26,7 @@ const AvaliacoesPage = () => {
     endereco: "",
     oculto: false
   });
+  const [successMessage, setSuccessMessage] = useState<string>("");
 
   useEffect(() => {
     const fetchReservaTitulo = async () => {
@@ -66,6 +67,8 @@ const AvaliacoesPage = () => {
       await axios.post(`http://127.0.0.1:8000/reviews/avaliacoes/add`, newAvaliacao);
       setAvaliacoes([...avaliacoes, newAvaliacao]);
       setNewAvaliacao({ id: 0, usuario: "", nota: 0, comentario: "", endereco: "", oculto: false });
+      setSuccessMessage("Avaliação adicionada com sucesso!");
+      setTimeout(() => setSuccessMessage(""), 3000); // Clear the message after 3 seconds
     } catch (error) {
       console.error("Erro ao adicionar avaliação:", error);
     }
@@ -107,6 +110,7 @@ const AvaliacoesPage = () => {
         />
         <button type="submit" className={styles.button}>Enviar Avaliação</button>
       </form>
+      {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
       <button onClick={() => navigate(`/usuario/${username}/reservas/${reservaName}`)} className={styles.button}>Voltar</button>
     </div>
   );

@@ -96,3 +96,9 @@
 .button:hover {
   opacity: 0.9;
 }
+
+.successMessage {
+  color: green;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
