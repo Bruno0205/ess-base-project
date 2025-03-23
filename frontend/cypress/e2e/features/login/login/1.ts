@@ -8,7 +8,7 @@ function validateRedirection(expectedPage: string) {
 
 // Etapa: Acessar a página de login
 Given('o usuário está na página {string}', (page: string) => {
-  cy.visit(page); // Acessa a página especificada (ex.: "/login")
+  cy.visit(page); // Acessa a página especificada "/login"
 });
 
 // Etapa: Preencher os campos de login e senha

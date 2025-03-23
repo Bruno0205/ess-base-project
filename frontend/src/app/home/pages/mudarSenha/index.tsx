@@ -53,7 +53,7 @@ const MudarSenha = () => {
               onChange={(e) => setEmail(e.target.value)}
               className={styles.input}
               required
-              data-cy="Email" // Adiciona o atributo data-cy
+              data-cy="Email" 
             />
           </label>
 

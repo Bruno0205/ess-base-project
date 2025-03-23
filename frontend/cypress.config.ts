@@ -26,7 +26,7 @@ export default defineConfig({
     ): Promise<Cypress.PluginConfigOptions> {
       await cucumberPreprocessor.addCucumberPreprocessorPlugin(on, config);
 
-      on(
+      on( 
         "file:preprocessor",
         createBundler({
           plugins: [createEsbuildPlugin(config)],

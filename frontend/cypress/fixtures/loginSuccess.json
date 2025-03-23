@@ -1,0 +1,19 @@
+{
+    "message": "Login bem-sucedido",
+    "user": {
+      "ativo": true,
+      "uf": "PE",
+      "email": "bcs6@cin.ufpe.br",
+      "login": "BrunoCS8",
+      "senha": "Senha123",
+      "liberado": true,
+      "codigo_verificacao": "8E3438",
+      "codigo_valido_ate": "2025-03-22T11:21:25.411921",
+      "reset_token": null,
+      "reset_token_expira": null,
+      "tipo_pessoa": "fisica",
+      "cpf": "123.231.231-22",
+      "nome": "BRUNO CARVALHO SOARES",
+      "nascimento": "2001-06-06"
+    }
+  }
