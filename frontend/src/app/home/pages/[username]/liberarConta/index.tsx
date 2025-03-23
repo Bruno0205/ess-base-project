@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import styles from "./index.module.css";
 
 const UserAccountVerification = () => {
-  const [email, setEmail] = useState(""); // Estado para o email
-  const [codigo, setCodigo] = useState(""); // Estado para o código de verificação
+  const [email, setEmail] = useState(""); //Estado para o email
+  const [codigo, setCodigo] = useState(""); //Estado para o código de verificação
 
-  // Função para solicitar o código de verificação
+  //Função para solicitar o código de verificação
   const handleSolicitarCodigo = async () => {
     if (!email) {
       alert("Por favor, insira um email válido.");
@@ -31,7 +31,7 @@ const UserAccountVerification = () => {
     }
   };
 
-  // Função para liberar a conta usando o código de verificação
+  //Função para liberar a conta usando o código de verificação
   const handleLiberarConta = async () => {
     if (!codigo) {
       alert("Por favor, insira o código de verificação.");
@@ -60,7 +60,7 @@ const UserAccountVerification = () => {
     <div className={styles.container}>
       <h1>Verificação de Conta</h1>
 
-      {/* Campo para inserir o email */}
+      {/*Campo para inserir o email*/}
       <div className={styles.inputGroup}>
         <label>
           Email:
@@ -78,7 +78,7 @@ const UserAccountVerification = () => {
         </button>
       </div>
 
-      {/* Campo para inserir o código de verificação */}
+      {/*Campo para inserir o código de verificação*/}
       <div className={styles.inputGroup}>
         <label>
           Código de Verificação:

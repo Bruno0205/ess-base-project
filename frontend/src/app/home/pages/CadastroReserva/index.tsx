@@ -3,23 +3,23 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./index.module.css";
 
 const AddReserva = () => {
-  const { username } = useParams(); // Captura o parâmetro :username da URL
+  const { username } = useParams(); //Captura :username
   const [formData, setFormData] = useState({
     titulo: "",
     descricao: "",
-    imagens: [] as string[], // Array para armazenar os links das imagens
+    imagens: [] as string[], //Links das imagens
     petfriendly: false,
     endereco: "",
-    tipo: "Quarto", // Valor padrão
+    tipo: "Quarto", //Valor padrão
     disponibilidadeInicio: "",
     disponibilidadeFim: "",
     preco: 0,
-    usuario: username || "", // Usa o username diretamente como valor inicial (flag)
+    usuario: username || "", //Usa username como usuário
   });
 
   const navigate = useNavigate();
 
-  // Função para lidar com mudanças nos campos do formulário
+  //Lida com mudanças nos campos do formulário
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
 
@@ -28,11 +28,11 @@ const AddReserva = () => {
         ? (e.target as HTMLInputElement).checked
         : value;
 
-    // Trata o campo de imagens (divide os links por vírgula)
+    //Trata links de imagens
     if (name === "imagens") {
       setFormData((prev) => ({
         ...prev,
-        imagens: value.split(",").map((link) => link.trim()), // Divide os links por vírgula e remove espaços
+        imagens: value.split(",").map((link) => link.trim()), //Divide links
       }));
     } else {
       setFormData((prev) => ({
@@ -42,18 +42,18 @@ const AddReserva = () => {
     }
   };
 
-  // Função para lidar com o envio do formulário
+  //Lida com o envio do formulário
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Validação básica
+    //Validação básica
     if (!formData.titulo || !formData.descricao || !formData.disponibilidadeInicio || !formData.disponibilidadeFim) {
-      alert("Por favor, preencha todos os campos obrigatórios.");
+      alert("Preencha todos os campos obrigatórios.");
       return;
     }
 
     if (formData.descricao.length < 20) {
-      alert("A descrição deve ter no mínimo 20 caracteres.");
+      alert("Descrição mínima de 20 caracteres.");
       return;
     }
 
@@ -61,7 +61,7 @@ const AddReserva = () => {
       const requestBody = {
         titulo: formData.titulo,
         descricao: formData.descricao,
-        imagens: formData.imagens, // Inclui os links das imagens no corpo da requisição
+        imagens: formData.imagens, //Links das imagens
         petfriendly: formData.petfriendly,
         endereco: formData.endereco,
         tipo: formData.tipo,
@@ -70,7 +70,7 @@ const AddReserva = () => {
           fim: formData.disponibilidadeFim,
         },
         preco: parseFloat(formData.preco.toString()) || 0,
-        usuario: formData.usuario, // Usa o login (username) como usuário (flag)
+        usuario: formData.usuario, //Usuário (username)
       };
 
       const response = await fetch("http://127.0.0.1:8000/cadastro-reservas/add_reserva", {
@@ -84,7 +84,7 @@ const AddReserva = () => {
         throw new Error(errorData.detail || "Erro ao adicionar reserva");
       }
 
-      alert("Reserva publicada com sucesso!");
+      alert("Reserva publicada!");
       navigate(`/usuario/${username}/locacoes`);
     } catch (error) {
       console.error(error);
@@ -96,7 +96,7 @@ const AddReserva = () => {
     <div className={styles.container}>
       <h1>Adicionar Nova Reserva</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
-        {/* Título */}
+        {/*Título*/}
         <label>
           Título:
           <input
@@ -104,42 +104,42 @@ const AddReserva = () => {
             name="titulo"
             value={formData.titulo}
             onChange={handleChange}
-            placeholder="Título da reserva"
+            placeholder="Título"
             required
             className={styles.input}
             data-cy="Titulo"
           />
         </label>
 
-        {/* Descrição */}
+        {/*Descrição*/}
         <label>
           Descrição:
           <textarea
             name="descricao"
             value={formData.descricao}
             onChange={handleChange}
-            placeholder="Descreva sua reserva (mínimo 20 caracteres)"
+            placeholder="Descrição (mínimo 20 caracteres)"
             required
             className={styles.textarea}
             data-cy="Descricao"
           />
         </label>
 
-        {/* Links de imagens */}
+        {/*Links de Imagens*/}
         <label>
           Links de Imagens:
           <input
             type="text"
             name="imagens"
-            value={formData.imagens.join(", ")} // Exibe os links separados por vírgula
+            value={formData.imagens.join(", ")} //Exibe links separados por vírgula
             onChange={handleChange}
-            placeholder="Insira links de imagens separados por vírgula"
+            placeholder="Links de imagens"
             className={styles.input}
             data-cy="Imagens"
           />
         </label>
 
-        {/* Endereço */}
+        {/*Endereço*/}
         <label>
           Endereço:
           <input
@@ -147,14 +147,14 @@ const AddReserva = () => {
             name="endereco"
             value={formData.endereco}
             onChange={handleChange}
-            placeholder="Endereço da reserva"
+            placeholder="Endereço"
             required
             className={styles.input}
             data-cy="Endereco"
           />
         </label>
 
-        {/* Tipo */}
+        {/*Tipo*/}
         <label>
           Tipo:
           <select
@@ -171,10 +171,10 @@ const AddReserva = () => {
           </select>
         </label>
 
-        {/* Período de Disponibilidade */}
+        {/*Período de Disponibilidade*/}
         <div className={styles.dateGroup}>
           <label>
-            Início da Disponibilidade:
+            Início Disponibilidade:
             <input
               type="date"
               name="disponibilidadeInicio"
@@ -186,7 +186,7 @@ const AddReserva = () => {
             />
           </label>
           <label>
-            Fim da Disponibilidade:
+            Fim Disponibilidade:
             <input
               type="date"
               name="disponibilidadeFim"
@@ -199,7 +199,7 @@ const AddReserva = () => {
           </label>
         </div>
 
-        {/* Preço */}
+        {/*Preço*/}
         <label>
           Preço Diária:
           <input
@@ -207,7 +207,7 @@ const AddReserva = () => {
             name="preco"
             value={formData.preco}
             onChange={handleChange}
-            placeholder="Preço da reserva"
+            placeholder="Preço"
             min="0"
             step="0.01"
             required
@@ -216,7 +216,7 @@ const AddReserva = () => {
           />
         </label>
 
-        {/* Pet Friendly */}
+        {/*Aceita Pet*/}
         <div className={styles.petFriendlyContainer}>
           <label className={styles.petFriendlyLabel}>
             <input
@@ -231,7 +231,7 @@ const AddReserva = () => {
           </label>
         </div>
 
-        {/* Botão de Envio */}
+        {/*Botão de Envio*/}
         <button type="submit" className={styles.button} data-cy="PublicarReserva">
           Publicar Reserva
         </button>

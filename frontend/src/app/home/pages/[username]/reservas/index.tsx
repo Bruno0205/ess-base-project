@@ -4,12 +4,12 @@ import { Link, useParams } from "react-router-dom";
 import styles from "./index.module.css";
 
 const Reservas = () => {
-  const { username } = useParams(); // Captura o parâmetro :username da URL
+  const { username } = useParams(); //Captura o parâmetro :username da URL
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        {/* Botão Voltar com o username dinâmico */}
+        {/*Botão Voltar com o username dinâmico*/}
         <Link to={`/usuario/${username}`} className={styles.backButton}>
           Voltar
         </Link>
@@ -17,7 +17,7 @@ const Reservas = () => {
       </div>
 
       <div className={styles.listContainer}>
-        {/* Mensagem indicando que esta seção será desenvolvida no futuro */}
+        {/*Mensagem indicando que esta seção será desenvolvida no futuro*/}
         <p className={styles.placeholder}>
           Esta seção está reservada para o futuro desenvolvimento de funções para gerenciar suas reservas.
         </p>

@@ -1,74 +1,74 @@
 /* src/app/home/pages/Register/index.module.css */
+
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f5f5f5; /* Fundo claro */
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333; /* Cor do título mais suave */
-  }
-  
-  .tipoPessoaButtons {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 2rem;
-  }
-  
-  .tipoPessoaButtons button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    background-color: #ccc;
-    color: #333;
-  }
-  
-  .tipoPessoaButtons button.active {
-    background-color: #ff5a5f;
-    color: white;
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  label {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-size: 1rem;
-    color: #666;
-  }
-  
-  input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  
-  .submitButton {
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #ff5a5f;
-    color: white;
-  }
-  
-  .submitButton:hover {
-    opacity: 0.9;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.tipoPessoaButtons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 2rem;
+}
+
+.tipoPessoaButtons button {
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: black;
+}
+
+.tipoPessoaButtons button.active {
+  background-color: #ff5a5f;
+  color: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 400px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 1rem;
+  color: #666;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.submitButton {
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #ff5a5f;
+  color: white;
+}
+
+.submitButton:hover {
+  opacity: 0.9;
+}

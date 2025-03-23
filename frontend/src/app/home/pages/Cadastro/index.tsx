@@ -1,19 +1,24 @@
-// frontend/src/app/home/pages/Register/index.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import InputMask from "react-input-mask"; // Importa a biblioteca de máscara
+import InputMask from "react-input-mask";
 import styles from "./index.module.css";
 
 const Register = () => {
   const [isPessoaFisica, setIsPessoaFisica] = useState(true);
   const navigate = useNavigate();
 
-  const toggleTipoPessoa = () => {
-    setIsPessoaFisica((prev) => !prev);
+  const toggleTipoPessoa = (tipo: "PF" | "PJ") => {
+    if (tipo === "PF" && !isPessoaFisica) {
+      console.log("Alternando para Pessoa Física"); //Alterna para Pessoa Física
+      setIsPessoaFisica(true);
+    } else if (tipo === "PJ" && isPessoaFisica) {
+      console.log("Alternando para Pessoa Jurídica"); //Alterna para Pessoa Jurídica
+      setIsPessoaFisica(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); //Previne o comportamento padrão do form
 
     const formData = new FormData(e.currentTarget);
     const data: Record<string, string> = {};
@@ -23,11 +28,11 @@ const Register = () => {
 
     try {
       const url = isPessoaFisica
-        ? "http://127.0.0.1:8000/cadastro/cadastro/pf"
-        : "http://127.0.0.1:8000/cadastro/cadastro/pj";
+        ? "http://127.0.0.1:8000/cadastro/cadastro/pf" //URL para cadastro de Pessoa Física
+        : "http://127.0.0.1:8000/cadastro/cadastro/pj"; //URL para cadastro de Pessoa Jurídica
 
       const requestBody = isPessoaFisica
-        ? {
+        ? { //Dados de cadastro para Pessoa Física
             uf: data.uf,
             email: data.email,
             login: data.login,
@@ -36,7 +41,7 @@ const Register = () => {
             nome: data.nome,
             nascimento: data.nascimento,
           }
-        : {
+        : { //Dados de cadastro para Pessoa Jurídica
             uf: data.uf,
             email: data.email,
             login: data.login,
@@ -47,25 +52,24 @@ const Register = () => {
 
       const response = await fetch(url, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(requestBody),
+        headers: { "Content-Type": "application/json" }, //Cabeçalhos da requisição
+        body: JSON.stringify(requestBody), //Corpo da requisição
       });
 
-      if (!response.ok) {
-        const errorData = await response.json(); // Captura a mensagem de erro do backend
-        throw new Error(errorData.detail || "Erro ao cadastrar usuário");
+      if (!response.ok) { //Verifica se a resposta não foi OK
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Erro ao cadastrar usuário"); //Lança erro caso o cadastro falhe
       }
 
-      alert("Cadastro realizado com sucesso!");
-      navigate("/login");
+      alert("Cadastro realizado com sucesso!"); //Mensagem de sucesso
+      navigate("/login"); //Redireciona para a página de login
     } catch (error) {
-      // Verifica se o erro é uma instância de Error
       if (error instanceof Error) {
-        console.error(error.message);
-        alert(error.message); // Exibe a mensagem de erro do backend
+        console.error(error.message); //Exibe erro no console
+        alert(error.message); //Mensagem de erro
       } else {
-        console.error("Erro desconhecido:", error);
-        alert("Ocorreu um erro desconhecido. Tente novamente.");
+        console.error("Erro desconhecido:", error); //Exibe erro desconhecido
+        alert("Ocorreu um erro desconhecido. Tente novamente."); //Mensagem de erro genérica
       }
     }
   };
@@ -74,46 +78,70 @@ const Register = () => {
     <div className={styles.container}>
       <h1>Cadastro de Usuário</h1>
 
-      {/* Botões para alternar entre Pessoa Física e Jurídica */}
       <div className={styles.tipoPessoaButtons}>
         <button
-          onClick={toggleTipoPessoa}
+          onClick={() => toggleTipoPessoa("PF")}
           className={isPessoaFisica ? styles.active : ""}
+          data-cy="pessoa-fisica-button"
+          data-active={isPessoaFisica} //Novo atributo para teste
         >
           Pessoa Física
         </button>
         <button
-          onClick={toggleTipoPessoa}
+          onClick={() => toggleTipoPessoa("PJ")}
           className={!isPessoaFisica ? styles.active : ""}
+          data-cy="pessoa-juridica-button"
+          data-active={!isPessoaFisica} //Novo atributo para teste
         >
           Pessoa Jurídica
         </button>
       </div>
 
-      {/* Formulário de Cadastro */}
       <form onSubmit={handleSubmit} className={styles.form}>
-        {/* Campos comuns */}
         <label>
           UF:
-          <input type="text" name="uf" placeholder="Ex: SP" required />
+          <input
+            type="text"
+            name="uf"
+            placeholder="Ex: SP"
+            required
+            data-cy="uf-input"
+          />
         </label>
 
         <label>
           Email:
-          <input type="email" name="email" required placeholder="seu@email.com" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="seu@email.com"
+            data-cy="email-input"
+          />
         </label>
 
         <label>
           Login:
-          <input type="text" name="login" required placeholder="Seu login" />
+          <input
+            type="text"
+            name="login"
+            required
+            placeholder="Seu login"
+            data-cy="login-input"
+          />
         </label>
 
         <label>
           Senha:
-          <input type="password" name="senha" required placeholder="Sua senha" />
+          <input
+            type="password"
+            name="senha"
+            required
+            placeholder="Sua senha"
+            data-cy="senha-input"
+          />
         </label>
 
-        {/* Campos específicos para Pessoa Física */}
         {isPessoaFisica && (
           <>
             <label>
@@ -125,22 +153,33 @@ const Register = () => {
                 required
                 placeholder="000.000.000-00"
                 className={styles.input}
+                data-cy="cpf-input"
               />
             </label>
 
             <label>
               Nome:
-              <input type="text" name="nome" required placeholder="Seu nome completo" />
+              <input
+                type="text"
+                name="nome"
+                required
+                placeholder="Seu nome completo"
+                data-cy="nome-input"
+              />
             </label>
 
             <label>
               Data de Nascimento:
-              <input type="date" name="nascimento" required />
+              <input
+                type="date"
+                name="nascimento"
+                required
+                data-cy="nascimento-input"
+              />
             </label>
           </>
         )}
 
-        {/* Campos específicos para Pessoa Jurídica */}
         {!isPessoaFisica && (
           <>
             <label>
@@ -152,18 +191,28 @@ const Register = () => {
                 required
                 placeholder="00.000.000/0000-00"
                 className={styles.input}
+                data-cy="cnpj-input"
               />
             </label>
 
             <label>
               Razão Social:
-              <input type="text" name="razao_social" required placeholder="Razão social da empresa" />
+              <input
+                type="text"
+                name="razao_social"
+                required
+                placeholder="Razão social da empresa"
+                data-cy="razao-social-input"
+              />
             </label>
           </>
         )}
 
-        {/* Botão de envio */}
-        <button type="submit" className={styles.submitButton}>
+        <button
+          type="submit"
+          className={styles.submitButton}
+          data-cy="cadastrar-button"
+        >
           Cadastrar
         </button>
       </form>
