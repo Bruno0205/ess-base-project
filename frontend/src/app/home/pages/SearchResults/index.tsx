@@ -88,7 +88,7 @@ const SearchResults = () => {
       </div>
 
       <h1 className={styles.title}>
-        {isFiltersEmpty ? "Coloque seus filtros abaixo." : "Resultados da Busca"}
+        {isFiltersEmpty ? "Filtre sua reserva dos sonhos!" : "Filtre sua reserva dos sonhos!"}
       </h1>
       <div className={styles.resultsContainer}>
         {/* Filters */}
