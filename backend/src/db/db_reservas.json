@@ -38,7 +38,7 @@
                 "casa_mar.jpg"
             ],
             "petfriendly": true,
-            "endereco": "Avenida Atlântica, 456, Boa Viagem, PE",
+            "endereco": "Avenida Atl\u00c3\u00a2ntica, 456, Boa Viagem, PE",
             "tipo": "Casa",
             "disponibilidade": {
                 "inicio": "2025-03-01",
@@ -51,7 +51,7 @@
                 }
             ],
             "preco": 500,
-            "usuario": "jdoe@example.com",
+            "usuario": "BrunoCS8",
             "alugado_por": [
                 ""
             ],
@@ -59,6 +59,206 @@
             "qntdAlugado": 5,
             "destacado": true,
             "temporada": "string"
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
+        },
+        {
+            "ativo": true,
+            "titulo": "Sal\u00e3o Enorme para Eventos Corporativos",
+            "descricao": "Um sal\u00e3o enorme para festas corporativas que \u00e9 perfeito para eventos com capacidade de at\u00e9 1000 pessoas. Com \u00f3tima localiza\u00e7\u00e3o.",
+            "imagens": [
+                "imagem1",
+                "imagem2",
+                "imagem3"
+            ],
+            "petfriendly": false,
+            "endereco": "Rua das Am\u00e9lias, Francoso, 12, S\u00e3o Paulo, SP",
+            "tipo": "Sal\u00e3o",
+            "disponibilidade": {
+                "inicio": "2025-03-25",
+                "fim": "2025-04-01"
+            },
+            "alugado": [],
+            "preco": 5000,
+            "usuario": "BrunoCS8",
+            "alugado_por": [],
+            "avalMedia": 0,
+            "qntdAlugado": 0,
+            "destacado": false,
+            "temporada": null
         }
     ]
 }

@@ -1,104 +1,99 @@
-/* src/app/home/pages/RegisterReservation/index.module.css */
+/* src/app/add-reserva/pages/AddReserva/index.module.css */
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh;
-  background-color: #f9f9f9; /* Fundo claro */
+  min-height: 100vh;
+  background-color: #f5f5f5; /* Fundo claro para o restante da página */
   padding: 2rem;
-  position: relative; /* Permite posicionar o botão flutuante */
 }
 
-.header {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.backButton {
-  text-decoration: none;
-  color: #ff5a5f; /* Cor laranja vibrante */
-  font-weight: bold;
-}
-
-.title {
+h1 {
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   color: #333; /* Cor do título mais suave */
+  text-align: center;
 }
 
-.listContainer {
-  width: 100%;
-  max-width: 800px; /* Largura máxima para melhorar a responsividade */
+.form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Espaçamento entre os cartões */
+  gap: 1.5rem; /* Espaçamento entre os campos */
+  width: 100%;
+  max-width: 600px; /* Largura máxima do formulário */
 }
 
-.card {
-  padding: 1.5rem;
-  border: 1px solid #e0e0e0; /* Borda leve */
-  border-radius: 12px; /* Bordas arredondadas */
-  background-color: white;
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Sombreamento suave */
-  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animação suave ao passar o mouse */
-}
-
-.card:hover {
-  transform: translateY(-4px); /* Efeito de elevação ao passar o mouse */
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
-}
-
-.card h3 {
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-  color: #333;
-}
-
-.card p {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #555;
-}
-
-.card .button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+label {
   font-size: 1rem;
   font-weight: bold;
-  cursor: pointer;
-  color: white;
-  background-color: #ff5a5f; /* Cor laranja vibrante */
-  transition: background-color 0.2s ease; /* Animação suave ao passar o mouse */
-}
-
-.card .button:hover {
-  background-color: #e64d52; /* Tonalidade mais escura ao passar o mouse */
-}
-
-.floatingButton {
+  color: #333; /* Cor do texto do rótulo */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 56px;
-  height: 56px;
-  background-color: #ff5a5f; /* Cor laranja vibrante */
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  border-radius: 50%; /* Torna o botão redondo */
-  text-decoration: none;
-  position: fixed; /* Fixa o botão na tela */
-  bottom: 20px; /* Distância do fundo */
-  right: 20px; /* Distância da direita */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
-  cursor: pointer;
-  transition: background-color 0.2s ease; /* Animação suave ao passar o mouse */
+  flex-direction: column;
+  gap: 0.5rem; /* Espaçamento entre o rótulo e o campo */
 }
 
-.floatingButton:hover {
-  background-color: #e64d52; /* Tonalidade mais escura ao passar o mouse */
+.input,
+.textarea,
+.select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%; /* Ocupa toda a largura disponível */
+}
+
+.textarea {
+  resize: vertical; /* Permite redimensionar verticalmente */
+  min-height: 100px; /* Altura mínima para descrição */
+}
+
+.dateGroup {
+  display: flex;
+  gap: 1rem; /* Espaçamento entre os campos de data */
+}
+
+.petFriendlyContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espaçamento entre o checkbox e o rótulo */
+}
+
+.petFriendlyLabel {
+  font-size: 1rem;
+  color: #333; /* Cor do texto do rótulo */
+}
+
+.checkbox {
+  margin: 0; /* Remove margens padrão do checkbox */
+}
+
+.button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Cor do texto nos botões */
+  background-color: #ff5a5f; /* Cor laranja vibrante */
+  transition: opacity 0.3s ease; /* Transição suave para hover */
+  width: 100%; /* Botão ocupa toda a largura disponível */
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .dateGroup {
+    flex-direction: column; /* Coloca os campos de data em coluna */
+  }
+
+  .form {
+    gap: 1rem; /* Reduz o espaçamento entre os campos */
+  }
 }

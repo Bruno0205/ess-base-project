@@ -20,9 +20,10 @@ When(
   }
 );
 
-// Etapa: Clicar no botão "Entrar"
 When('o usuário clica no botão "Entrar"', () => {
+  cy.intercept('POST', 'http://localhost:8000/login/auth', { fixture: 'loginSuccess.json' }).as('authRequest');
   cy.get('[data-cy="Entrar"]').click(); // Simula o clique no botão
+  cy.wait('@authRequest'); // Espera pela resposta simulada
 });
 
 // Etapa: Verificar o redirecionamento
