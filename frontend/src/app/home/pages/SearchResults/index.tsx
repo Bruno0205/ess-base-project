@@ -73,8 +73,6 @@ const SearchResults = () => {
     fetchReservas();
   }, [location.search]);
 
-  const isFiltersEmpty = Object.values(filters).every(value => value === "" || value === false);
-
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -88,7 +86,7 @@ const SearchResults = () => {
       </div>
 
       <h1 className={styles.title}>
-        {isFiltersEmpty ? "Filtre sua reserva dos sonhos!" : "Filtre sua reserva dos sonhos!"}
+        Filtre sua reserva dos sonhos!
       </h1>
       <div className={styles.resultsContainer}>
         {/* Filters */}
