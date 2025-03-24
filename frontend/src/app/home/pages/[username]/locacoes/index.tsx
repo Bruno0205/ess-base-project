@@ -1,6 +1,6 @@
 // frontend/src/app/home/pages/[username]/minhasLocacoes/index.tsx
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom"; // Import useNavigate
 import styles from "./index.module.css";
 
 //Definição do tipo para as reservas
@@ -18,6 +18,7 @@ interface Reserva {
 const MinhasLocacoes = () => {
   const { username } = useParams(); //Captura o parâmetro :username da URL
   const [reservas, setReservas] = useState<Reserva[]>([]); //Estado com tipo explícito
+  const navigate = useNavigate(); // Initialize useNavigate
 
   //Função para buscar as reservas do usuário no backend
   const fetchReservas = async () => {
@@ -65,7 +66,11 @@ const MinhasLocacoes = () => {
               <p>
                 <strong>Aceita Pets:</strong> {reserva.petfriendly ? "Sim" : "Não"}
               </p>
-              <button className={styles.button} data-cy={`detalhes-button-${reserva.id}`}>
+              <button
+                className={styles.button}
+                data-cy={`detalhes-button-${reserva.id}`}
+                onClick={() => navigate(`/usuario/${username}/reservas/${reserva.titulo.toLowerCase().replace(/\s+/g, "-")}`)} // Navigate to the details page
+              >
                 Ver Detalhes
               </button>
             </div>

@@ -1,4 +1,4 @@
-/* src/app/home/pages/Home/index.module.css */
+/* frontend/src/app/home/pages/[username]/index.module.css */
 .container {
   display: flex;
   flex-direction: column;
@@ -6,6 +6,17 @@
   justify-content: center;
   min-height: 100vh;
   background-color: #f5f5f5; /* Fundo claro para o restante da página */
+  padding: 2rem;
+}
+
+.contentContainer {
+  background-color: #ffffff; /* Fundo branco para o contêiner */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para o contêiner */
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
 }
 
 .logo {
@@ -53,6 +64,8 @@
 
 .buttonsContainer {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 16px; /* Espaçamento entre os botões */
   margin-top: 2rem;
 }
@@ -73,47 +86,18 @@
   opacity: 0.9;
 }
 
-.input {
-  padding: 12px;
-  border: 1px solid #ccc;
+.logoutButton {
+  padding: 12px 24px;
+  border: none;
   border-radius: 4px;
   font-size: 1rem;
-  width: 30%;
-  margin-right: 1rem; /* Espaçamento entre o rótulo e o seguinte checkbox */
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Cor do texto nos botões */
+  background-color: #c62828; /* Cor vermelha para destacar o botão de sair */
 }
 
-.checkbox {
-  margin-right: 0.5rem; /* Espaçamento entre o checkbox e o rótulo */
-}
-
-.checkboxLabel {
-  font-size: 1rem;
-  color: #333; /* Cor do texto do rótulo */
-  margin-right: 1rem; /* Espaçamento entre o rótulo e o seguinte checkbox */
-  width: 20%;
-}
-
-.select {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  margin-top: 0.2rem; /* Espaçamento acima do select */
-  width: 30%; /* Faz o select ocupar toda a largura disponível */
-  margin-right: 1rem; /* Espaçamento entre o rótulo e o seguinte checkbox */
-}
-
-.filtersContainer {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem; /* Espaçamento acima do checkbox */
-  width: 100%;
-  margin-bottom: 2rem; /* Espaçamento acima do checkbox */
-}
-
-.noResults {
-  font-size: 1.25rem;
-  color: #555;
-  text-align: center;
-  margin-top: 2rem;
+.logoutButton:hover {
+  opacity: 0.9;
 }
