@@ -1,32 +1,50 @@
 import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 
-// Função auxiliar para validar o redirecionamento
+// Função auxiliar para validar redirecionamento
 function validateRedirection(expectedPage: string) {
-  cy.wait(500)
-  cy.url({ timeout: 10000 }).should("include", expectedPage); // Valida o redirecionamento
+  cy.url({ timeout: 10000 }).should("include", expectedPage);
 }
 
-// Etapa: Acessar a página de login
+// Passo: Verificar se o usuário está na página "/login"
 Given('o usuário está na página {string}', (page: string) => {
-  cy.visit(page); // Acessa a página especificada "/login"
+  cy.visit(page); // Navega para a página de login
 });
 
-// Etapa: Preencher os campos de login e senha
-When(
-  'o usuário preenche o campo "Login" com {string} e o campo "Senha" com {string}',
-  (login: string, senha: string) => {
-    cy.get('[data-cy="Login"]').type(login); // Preenche o campo "Login"
-    cy.get('[data-cy="Senha"]').type(senha); // Preenche o campo "Senha"
+// Passo: Preencher os campos de login e senha
+When('o usuário preenche o campo {string} com {string} e o campo {string} com {string}', (field1: string, value1: string, field2: string, value2: string) => {
+  if (field1 === "Login") {
+    cy.get('[data-cy="Login"]').type(value1); // Preenche o campo de login
   }
-);
-
-When('o usuário clica no botão "Entrar"', () => {
-  cy.intercept('POST', 'http://localhost:8000/login/auth', { fixture: 'loginSuccess.json' }).as('authRequest');
-  cy.get('[data-cy="Entrar"]').click(); // Simula o clique no botão
-  cy.wait('@authRequest'); // Espera pela resposta simulada
+  if (field2 === "Senha") {
+    cy.get('[data-cy="Senha"]').type(value2); // Preenche o campo de senha
+  }
 });
 
-// Etapa: Verificar o redirecionamento
+// Passo: Clicar no botão "Entrar"
+When('o usuário clica no botão {string}', (buttonText: string) => {
+  cy.intercept('POST', '**/login/auth?login=BrunoCS8&senha=Senha123').as('loginRequest'); // Intercepta a requisição de login
+  cy.get('[data-cy="Entrar"]').click(); // Clica no botão "Entrar"
+});
+
+// Passo: Verificar a mensagem de erro
+Then('o usuário deve ver a mensagem {string}', (message: string) => {
+  cy.on('window:alert', (alertText) => {
+    expect(alertText).to.equal(message); // Verifica a mensagem exibida ao usuário
+  });
+});
+
+// Passo: Verificar o redirecionamento
 Then('o usuário deve ser redirecionado para a página {string}', (page: string) => {
-  validateRedirection(page); // Valida o redirecionamento
+  cy.wait('@loginRequest', { timeout: 10000 }).then((interception) => {
+    expect(interception.response?.statusCode).to.eq(200); // Verifica o status HTTP da resposta
+  });
+  validateRedirection(page); // Verifica o redirecionamento para a página esperada
+});
+
+// Passo: Validar resposta do backend em caso de erro
+Then('o backend deve retornar erro com status {int} e mensagem {string}', (statusCode: number, errorMessage: string) => {
+  cy.wait('@loginRequest').then((interception) => {
+    expect(interception.response?.statusCode).to.eq(statusCode); // Verifica o status HTTP
+    expect(interception.response?.body.detail).to.eq(errorMessage); // Verifica a mensagem de erro no corpo da resposta
+  });
 });

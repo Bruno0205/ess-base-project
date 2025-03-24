@@ -42,7 +42,7 @@ const MudarSenha = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <h1 className={styles.title}>Mudar Senha</h1>
+        <h1 className={styles.title}>Solicitar Código</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           {/*Campo de E-mail*/}
           <label className={styles.label}>
